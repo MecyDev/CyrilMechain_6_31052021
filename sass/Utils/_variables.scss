@@ -1,0 +1,23 @@
+/*Font variables*/
+$font-primary: "DM Sans", sans-serif;
+
+/*button color*/
+$btn-bg-primary: #901c1c;
+$btn-bg-secondary: #db8876;
+
+/*text color*/
+$txt-primary-light: #fff;
+$txt-primary-dark: #d3573c;
+$txt-secondary-light: #525252;
+$txt-secondary-dark: #000;
+$txt-secondary-cl: $btn-bg-primary;
+
+//animation variable
+$modal-anim-duration: 0.8s;
+
+/*breakpoints*/
+$breakpoints: (
+  medium: 800px,
+  large: 1200px,
+  xLarge: 1440px,
+);
