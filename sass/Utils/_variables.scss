@@ -8,9 +8,13 @@ $btn-bg-secondary: #db8876;
 /*text color*/
 $txt-primary-light: #fff;
 $txt-primary-dark: #d3573c;
+$txt-primary-darken: $btn-bg-primary;
 $txt-secondary-light: #525252;
 $txt-secondary-dark: #000;
 $txt-secondary-cl: $btn-bg-primary;
+
+/*card price color*/
+$txt-price-card-color: #757575;
 
 //animation variable
 $modal-anim-duration: 0.8s;
