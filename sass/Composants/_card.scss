@@ -1,5 +1,8 @@
 .card {
   width: 301px;
+  @include large {
+    width: 26%;
+  }
   margin-bottom: 30px;
 
   &__link {

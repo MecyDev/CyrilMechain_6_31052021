@@ -5,6 +5,7 @@ html {
 
 body {
   width: 90%;
+  max-width: map-get($breakpoints, max);
   margin: 3rem auto 0 auto;
 }
 
@@ -13,5 +14,8 @@ main {
   flex-flow: row wrap;
   align-items: center;
   justify-content: center;
+  @include large {
+    justify-content: space-between;
+  }
   margin-top: 30px;
 }
