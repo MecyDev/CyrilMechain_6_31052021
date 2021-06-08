@@ -9,20 +9,33 @@
   &__link {
     &__logo {
       display: block;
-      width: 15rem;
-      height: 3.7rem;
+      width: 40vw;
+      max-width: 200px;
+      height: auto;
+      max-height: 50px;
+      order: 1;
     }
   }
 
   &__nav {
-    width: 100%;
+    width: 100vw;
+    @include large {
+      width: 600px;
+      order: 2;
+    }
     margin-top: 15px;
   }
 
   &__head {
-    font-size: 1.4rem;
+    font-size: 3.73vw;
+    @include medium {
+      font-size: 36px;
+    }
     line-height: 1.8rem;
     text-align: center;
     color: #911c1c;
+    @include large {
+      order: 3;
+    }
   }
 }
