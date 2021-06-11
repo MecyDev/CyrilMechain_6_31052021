@@ -13,4 +13,9 @@
   &:hover {
     cursor: pointer;
   }
+
+  &--select {
+    background-color: $btn-bg-primary;
+    color: $txt-primary-light;
+  }
 }

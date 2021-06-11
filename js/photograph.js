@@ -3,7 +3,7 @@
  */
 
 class Photograph {
-  constructor(photograph) {
+  constructor(photograph, list) {
     this.id = photograph.id;
     this.name = photograph.name;
     this.city = photograph.city;
@@ -12,6 +12,7 @@ class Photograph {
     this.tagline = photograph.tagline;
     this.price = photograph.price;
     this.portrait = photograph.portrait;
+    this.media = list;
   }
 
   get card() {
@@ -31,7 +32,16 @@ class Photograph {
           .join("")}
         </ul>
       </div>`;
-
     return card;
+  }
+
+  get medias() {
+    this.media.forEach((e) => {
+      if (e.hasOwnProperty("image")) {
+        const media = new MediaPhoto();
+      } else {
+        const media = new MediaVideo();
+      }
+    });
   }
 }
