@@ -38,9 +38,9 @@ class Photograph {
   get medias() {
     this.media.forEach((e) => {
       if (e.hasOwnProperty("image")) {
-        const media = new MediaPhoto();
+        const media = new MediaPhoto(e);
       } else {
-        const media = new MediaVideo();
+        const media = new MediaVideo(e);
       }
     });
   }
