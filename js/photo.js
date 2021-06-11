@@ -4,6 +4,6 @@
 
 class Photo {
   makeCard() {
-    console.log("je suis une photo");
+    console.log(`Je suis une image`);
   }
 }

@@ -4,6 +4,6 @@
 
 class Video {
   makeCard() {
-    console.log("Je suis une vidéo");
+    console.log(`Je suis une video`);
   }
 }

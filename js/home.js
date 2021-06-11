@@ -65,6 +65,7 @@ function getPhotographers() {
       }
       const photograph = new Photograph(jsonPhotograph, list);
       displayPhotographer(photograph);
+      console.log(photograph.medias);
     }
   });
 }
