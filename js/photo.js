@@ -2,8 +2,13 @@
  * The class who represent a Photo
  */
 
-class Photo {
+class Photo extends Media {
+  constructor(media) {
+    super(media);
+    this.image = media.image;
+  }
+
   makeCard() {
-    console.log(`Je suis une image`);
+    console.log(`${this.image}`);
   }
 }

@@ -1,5 +1,10 @@
 class MediaVideo extends Media {
+  constructor(media) {
+    super(media);
+    this.video = media.video;
+  }
+
   makeMedia() {
-    return new Video();
+    return new Video(this.video);
   }
 }

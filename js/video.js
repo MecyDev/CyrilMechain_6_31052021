@@ -2,8 +2,13 @@
  * The class who represent a Video
  */
 
-class Video {
+class Video extends Media {
+  constructor(media) {
+    super(media);
+    this.video = media.video;
+  }
+
   makeCard() {
-    console.log(`Je suis une video`);
+    console.log(`${this.video}`);
   }
 }

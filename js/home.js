@@ -20,7 +20,7 @@ tags.forEach(
   false
 );
 
-console.log(getPhotographers());
+getPhotographers();
 
 function getData() {
   return promiseFetchJson.then((data) => data.json());
@@ -65,7 +65,6 @@ function getPhotographers() {
       }
       const photograph = new Photograph(jsonPhotograph, list);
       displayPhotographer(photograph);
-      console.log(photograph.medias);
     }
   });
 }

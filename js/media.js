@@ -11,10 +11,23 @@ class Media {
     this.likes = media.likes;
     this.date = media.date;
     this.price = media.price;
+    this.media = media;
+
+    this.createMedia = function (type) {
+      let media;
+
+      if (type === "photo") {
+        media = new Photo(this.media);
+      } else if (type === "video") {
+        media = new Video(this.media);
+      }
+
+      return media;
+    };
   }
 
-  takeMedia() {
+  /*takeMedia() {
     const mediaType = this.makeMedia();
     mediaType.makeCard();
-  }
+  }*/
 }

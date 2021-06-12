@@ -37,12 +37,13 @@ class Photograph {
 
   get medias() {
     this.media.forEach((e) => {
+      const factory = new Media(e);
       if (e.hasOwnProperty("image")) {
-        const media = new MediaPhoto(e);
-        console.log(media.takeMedia());
+        const media = factory.createMedia("photo");
+        media.makeCard();
       } else {
-        const media = new MediaVideo(e);
-        console.log(media.takeMedia());
+        const media = factory.createMedia("video");
+        media.makeCard();
       }
     });
   }
