@@ -17,7 +17,9 @@ class Photograph {
 
   get card() {
     const card = `<div class="card" id=${this.id}>
-        <a class="card__link" href="#">
+        <a class="card__link" href="http://${
+          window.location.host
+        }/page.html?photograph=${this.id}">
           <img class="card__img" src="./img/Photo-id/${this.portrait}" alt="" />
           <h2 class="card__h2">${this.name}</h2>
         </a>

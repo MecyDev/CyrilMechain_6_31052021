@@ -2,12 +2,15 @@
  * Class for display and sort photgraphers
  */
 
-class Photographers {
-  constructor(url, listTags) {
+class PhotographManager {
+  constructor(url, listTags, photographId) {
     this.url = url;
     this.tags = listTags;
+    this.id = photographId;
     const jsonData = this.jData(this.url);
-    this.getPhotographers(jsonData);
+    if (photographId === undefined) {
+      this.getPhotographers(jsonData);
+    }
   }
 
   async jData(url) {
@@ -21,7 +24,7 @@ class Photographers {
     }
   }
 
-  getPhotographers(data) {
+  getPhotographers(data, id) {
     document.querySelector("main").innerHTML = "";
     data.then((photographers) => {
       for (let photographer of photographers.photographers) {
