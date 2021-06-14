@@ -4,7 +4,7 @@ html {
 }
 
 body {
-  width: 90%;
+  width: 90vw;
   max-width: map-get($breakpoints, max);
   margin: 3rem auto 0 auto;
 }
