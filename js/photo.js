@@ -9,6 +9,8 @@ class Photo extends Media {
   }
 
   makeCard() {
-    console.log(`${this.image}`);
+    console.log(this.image);
+    const display = `<article><a><img src="./medias/${this.photographerId}/mini/${this.image}" alt=""></a></article>`;
+    return display;
   }
 }

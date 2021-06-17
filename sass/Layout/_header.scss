@@ -3,8 +3,10 @@
   align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
-  width: 90%;
-  height: 135px;
+  width: 100%;
+  @include large {
+    width: 90%;
+  }
   margin: 0 auto;
 
   &__link {

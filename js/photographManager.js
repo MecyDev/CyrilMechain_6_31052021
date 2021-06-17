@@ -3,14 +3,12 @@
  */
 
 class PhotographManager {
-  constructor(url, listTags, photographId) {
+  constructor(url) {
     this.url = url;
-    this.tags = listTags;
-    this.id = photographId;
+    const listPhotograph = [];
+    this.listPhotograph = listPhotograph;
     const jsonData = this.jData(this.url);
-    if (photographId === undefined) {
-      this.getPhotographers(jsonData);
-    }
+    this.jsonData = jsonData;
   }
 
   async jData(url) {
@@ -24,9 +22,8 @@ class PhotographManager {
     }
   }
 
-  getPhotographers(data, id) {
-    document.querySelector("main").innerHTML = "";
-    data.then((photographers) => {
+  getAllPhotograph() {
+    this.jsonData.then((photographers) => {
       for (let photographer of photographers.photographers) {
         let list = [];
         for (let media of photographers.media) {
@@ -34,20 +31,61 @@ class PhotographManager {
             list.push(media);
           }
         }
-        if (this.sortByTag(photographer.tags)) {
-          const photograph = new Photograph(photographer, list);
-          this.displayPhotograph(photograph);
+        photographer.medias = list;
+        const photograph = new Photograph(photographer);
+        this.displayPhotographCard(photograph);
+      }
+    });
+  }
+
+  getAllPhotographByTags(tags) {
+    document.querySelector("main").innerHTML = "";
+    this.jsonData.then((photographers) => {
+      for (let photographer of photographers.photographers) {
+        let list = [];
+        for (let media of photographers.media) {
+          if (media.photographerId === photographer.id) {
+            list.push(media);
+          }
+        }
+        photographer.medias = list;
+        if (this.filterByTag(tags, photographer.tags)) {
+          const photograph = new Photograph(photographer);
+          this.displayPhotographCard(photograph);
         }
       }
     });
   }
 
-  displayPhotograph(photograph) {
+  getPhotographById(id) {
+    this.jsonData.then((photographers) => {
+      for (let photographer of photographers.photographers) {
+        if (photographer.id == id) {
+          let list = [];
+          for (let media of photographers.media) {
+            if (media.photographerId === photographer.id) {
+              list.push(media);
+            }
+          }
+          photographer.media = list;
+          const photograph = new Photograph(photographer);
+          this.displayPhotograph(photograph);
+          photograph.medias;
+        }
+      }
+    });
+  }
+
+  displayPhotographCard(photograph) {
     document.querySelector("main").innerHTML += photograph.card;
   }
 
-  sortByTag(phTags) {
-    const find = this.tags.every((tag) => {
+  displayPhotograph(photograph) {
+    document.querySelector(".informations").innerHTML += photograph.information;
+  }
+
+  filterByTag(ListTags, phTags) {
+    const find = listTags.every((tag) => {
       if (phTags.includes(tag) || phTags.includes(this.without(tag))) {
         return true;
       }

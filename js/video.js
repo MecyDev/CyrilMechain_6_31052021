@@ -9,6 +9,12 @@ class Video extends Media {
   }
 
   makeCard() {
-    console.log(`${this.video}`);
+    const display = `
+    <article>
+      <a>
+        <img src="./medias/${this.photographerId}/video/thumbnail.jpg" alt="">
+      </a>
+    </article>`;
+    return display;
   }
 }

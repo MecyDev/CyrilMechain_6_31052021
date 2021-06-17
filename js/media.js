@@ -25,9 +25,4 @@ class Media {
       return media;
     };
   }
-
-  /*takeMedia() {
-    const mediaType = this.makeMedia();
-    mediaType.makeCard();
-  }*/
 }

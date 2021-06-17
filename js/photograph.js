@@ -3,7 +3,7 @@
  */
 
 class Photograph {
-  constructor(photograph, list) {
+  constructor(photograph) {
     this.id = photograph.id;
     this.name = photograph.name;
     this.city = photograph.city;
@@ -12,7 +12,7 @@ class Photograph {
     this.tagline = photograph.tagline;
     this.price = photograph.price;
     this.portrait = photograph.portrait;
-    this.media = list;
+    this.media = photograph.media;
   }
 
   get card() {
@@ -20,7 +20,9 @@ class Photograph {
         <a class="card__link" href="http://${
           window.location.host
         }/page.html?photograph=${this.id}">
-          <img class="card__img" src="./img/Photo-id/${this.portrait}" alt="" />
+          <img class="card__img" src="./medias/Photo-id/${
+            this.portrait
+          }" alt="" />
           <h2 class="card__h2">${this.name}</h2>
         </a>
         <p class="card__from">${this.city}, ${this.country}</p>
@@ -37,16 +39,38 @@ class Photograph {
     return card;
   }
 
+  get information() {
+    const information = `<h1>${this.name}</h1>
+    <p>${this.city}, ${this.country}</p>
+    <p>${this.tagline}</p>
+    <ul class="inline">
+    <img src="./medias/Photo-id/${this.portrait}" alt="" />
+    ${this.tags
+      .map(function (e) {
+        return `<li class="tag"><strong>#${e}</strong></li>`;
+      })
+      .join("")}
+    </ul>
+    `;
+    return information;
+  }
+
   get medias() {
     this.media.forEach((e) => {
       const factory = new Media(e);
       if (e.hasOwnProperty("image")) {
         const media = factory.createMedia("photo");
-        media.makeCard();
+        this.displayMediaCard(media.makeCard());
       } else {
         const media = factory.createMedia("video");
-        media.makeCard();
+        this.displayMediaCard(media.makeCard());
       }
     });
   }
+
+  displayMediaCard(media) {
+    document.querySelector(".medias").innerHTML += media;
+  }
+
+  /*End Class*/
 }

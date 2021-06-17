@@ -7,26 +7,27 @@ const param = new URLSearchParams(photograph);
 
 if (param.has("photograph")) {
   const photographId = param.get("photograph");
-  let photographers = new PhotographManager(url, [], photographId);
+  const photographers = new PhotographManager(url);
+  photographers.getPhotographById(photographId);
 } else {
-  let photographers = new PhotographManager(url, listTags);
-}
+  const photographers = new PhotographManager(url);
+  photographers.getAllPhotograph();
 
-tags.forEach(
-  (tag) =>
-    tag.addEventListener("click", function () {
-      let tagName = tag.querySelector("span").innerHTML.toLowerCase();
-      if (tag.classList.contains("tag--select") == false) {
-        tag.classList.add("tag--select");
-        listTags.push(tagName);
-        console.log(listTags);
-        photographers = new PhotographManager(url, listTags);
-      } else {
-        tag.classList.remove("tag--select");
-        listTags = listTags.filter((i) => i !== tagName);
-        console.log(listTags);
-        photographers = new PhotographManager(url, listTags);
-      }
-    }),
-  false
-);
+  tags.forEach(
+    (tag) =>
+      tag.addEventListener("click", function (event) {
+        let tagName = tag.querySelector("span").innerHTML.toLowerCase();
+        if (tag.classList.contains("tag--select") == false) {
+          tag.classList.add("tag--select");
+          listTags.push(tagName);
+
+          photographers.getAllPhotographByTags(listTags);
+        } else {
+          tag.classList.remove("tag--select");
+          listTags = listTags.filter((i) => i !== tagName);
+          photographers.getAllPhotographByTags(listTags);
+        }
+      }),
+    false
+  );
+}
