@@ -1,0 +1,50 @@
+.informations {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+
+  &__container {
+    width: 230px;
+  }
+
+  &__header {
+    font-size: 3.6rem;
+    line-height: 4.7rem;
+    color: $txt-primary-dark;
+  }
+
+  &__geo {
+    font-size: 1.3rem;
+    line-height: 1.7rem;
+    color: $txt-secondary-cl;
+    margin-bottom: 4px;
+  }
+
+  &__tagline {
+    font-size: 1.3rem;
+    line-height: 1.7rem;
+    color: $txt-price-card-color;
+    margin-bottom: 7px;
+  }
+
+  &__contact {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  &__contImg {
+    width: 100px;
+    height: 100px;
+  }
+
+  &__img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    overflow: hidden;
+    border-radius: 100%;
+    box-shadow: 0px 2px 8px rgb(216, 216, 216);
+  }
+}

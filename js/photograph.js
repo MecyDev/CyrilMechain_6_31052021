@@ -40,17 +40,24 @@ class Photograph {
   }
 
   get information() {
-    const information = `<h1>${this.name}</h1>
-    <p>${this.city}, ${this.country}</p>
-    <p>${this.tagline}</p>
-    <ul class="inline">
-    <img src="./medias/Photo-id/${this.portrait}" alt="" />
+    const information = `
+    <div class="informations__container">
+      <h1 class="informations__header">${this.name}</h1>
+      <p class="informations__geo">${this.city}, ${this.country}</p>
+      <p class="informations__tagline">${this.tagline}</p>
+      <ul class="inline inline--nocenter">
     ${this.tags
       .map(function (e) {
         return `<li class="tag"><strong>#${e}</strong></li>`;
       })
       .join("")}
     </ul>
+    </div>
+    <div class="btn btn--mobile informations__contact">Contactez-moi</div>
+    
+    <p class="informations__contImg"><img class="informations__img" src="./medias/Photo-id/${
+      this.portrait
+    }" alt="${this.name}" /></p>
     `;
     return information;
   }

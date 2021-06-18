@@ -1,1 +1,19 @@
+.btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 170px;
+  height: 69px;
+  background-color: $btn-bg-primary;
+  font-weight: bold;
+  font-size: 2rem;
+  line-height: 2.6rem;
+  color: $txt-primary-light;
+  border-radius: 5px;
 
+  &--mobile {
+    height: 35px;
+    font-size: 1.8rem;
+    line-height: 2.3rem;
+  }
+}
