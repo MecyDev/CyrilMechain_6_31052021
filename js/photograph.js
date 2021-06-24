@@ -15,6 +15,10 @@ class Photograph {
     this.media = photograph.media;
   }
 
+  get namePhotograph() {
+    return this.name;
+  }
+
   get card() {
     const card = `<div class="card" id=${this.id}>
         <a class="card__link" href="http://${
@@ -45,6 +49,7 @@ class Photograph {
       <h1 class="informations__header">${this.name}</h1>
       <p class="informations__geo">${this.city}, ${this.country}</p>
       <p class="informations__tagline">${this.tagline}</p>
+      <div class="btn informations__contact" onclick="openModal()">Contactez-moi</div>
       <ul class="inline inline--nocenter">
     ${this.tags
       .map(function (e) {
@@ -53,7 +58,7 @@ class Photograph {
       .join("")}
     </ul>
     </div>
-    <div class="btn btn--mobile informations__contact">Contactez-moi</div>
+    
     
     <p class="informations__contImg"><img class="informations__img" src="./medias/Photo-id/${
       this.portrait

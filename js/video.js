@@ -10,9 +10,11 @@ class Video extends Media {
 
   makeCard() {
     const display = `
-    <article>
+    <article class="cardmedia">
       <a>
         <img src="./medias/${this.photographerId}/video/thumbnail.jpg" alt="">
+        <p class="cardmedia__title">${this.title}</p>
+        <p class="cardmedia__likes">${this.likes}</p><i class="fas fa-heart cardmedia__icon"></i>
       </a>
     </article>`;
     return display;

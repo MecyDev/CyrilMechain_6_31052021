@@ -20,7 +20,6 @@ if (param.has("photograph")) {
         if (tag.classList.contains("tag--select") == false) {
           tag.classList.add("tag--select");
           listTags.push(tagName);
-
           photographers.getAllPhotographByTags(listTags);
         } else {
           tag.classList.remove("tag--select");

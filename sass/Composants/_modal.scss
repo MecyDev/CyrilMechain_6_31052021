@@ -1,0 +1,47 @@
+.modal {
+  display: none;
+  position: fixed;
+  background-color: $modal_color;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 15;
+  border-radius: 5px;
+
+  &__body {
+    width: 90%;
+    align-items: center;
+    margin: 0 auto;
+  }
+
+  &__header {
+    width: 90%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-size: 36px;
+    line-height: 47px;
+  }
+}
+
+.close {
+  position: absolute;
+  right: 15px;
+  top: 18px;
+  width: 32px;
+  height: 32px;
+  opacity: 1;
+  cursor: pointer;
+  transform: scale(0.7);
+  z-index: 2;
+
+  &:before {
+    @include close;
+    transform: rotate(45deg);
+  }
+
+  &:after {
+    @include close;
+    transform: rotate(-45deg);
+  }
+}
