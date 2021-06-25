@@ -9,7 +9,6 @@ class Photo extends Media {
   }
 
   makeCard() {
-    console.log(this.image);
     const display = `
     <article class="cardmedia">
       <a>

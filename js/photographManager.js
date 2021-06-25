@@ -82,6 +82,8 @@ class PhotographManager {
 
   displayPhotograph(photograph) {
     document.querySelector(".informations").innerHTML += photograph.information;
+    document.querySelector(".modal__header").innerHTML +=
+      photograph.namePhotograph;
   }
 
   filterByTag(ListTags, phTags) {

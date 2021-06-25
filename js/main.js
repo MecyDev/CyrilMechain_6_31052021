@@ -9,6 +9,10 @@ if (param.has("photograph")) {
   const photographId = param.get("photograph");
   const photographers = new PhotographManager(url);
   photographers.getPhotographById(photographId);
+
+  function openModal() {
+    modal.style.display = "block";
+  }
 } else {
   const photographers = new PhotographManager(url);
   photographers.getAllPhotograph();
