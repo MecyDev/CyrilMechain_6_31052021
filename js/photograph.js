@@ -71,19 +71,6 @@ class Photograph {
     return information;
   }
 
-  /*get medias() {
-    this.media.forEach((e) => {
-      const factory = new Media(e);
-      if (e.hasOwnProperty("image")) {
-        const media = factory.createMedia("photo");
-        this.displayMediaCard(media.makeCard());
-      } else {
-        const media = factory.createMedia("video");
-        this.displayMediaCard(media.makeCard());
-      }
-    });
-  }*/
-
   displayMediaCard(media) {
     document.querySelector(".medias").innerHTML += media;
   }

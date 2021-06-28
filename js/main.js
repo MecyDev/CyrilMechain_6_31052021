@@ -73,6 +73,7 @@ function displayPhotograph(id) {
           document.querySelector(".informations").innerHTML +=
             photograph.information;
           media(jsonPhotograph.medias);
+          document.querySelector(".modal__header").innerHTML += photograph.name;
         }
       }
     }
