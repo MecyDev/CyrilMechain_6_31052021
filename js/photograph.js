@@ -19,6 +19,10 @@ class Photograph {
     return this.name;
   }
 
+  get mediaTake() {
+    return this.media;
+  }
+
   get card() {
     const card = `<div class="card" id=${this.id}>
         <a class="card__link" href="http://${
@@ -49,7 +53,7 @@ class Photograph {
       <h1 class="informations__header">${this.name}</h1>
       <p class="informations__geo">${this.city}, ${this.country}</p>
       <p class="informations__tagline">${this.tagline}</p>
-      <div class="btn informations__contact" onclick="openModal()">Contactez-moi</div>
+      <div class="btn informations__contact">Contactez-moi</div>
       <ul class="inline inline--nocenter">
     ${this.tags
       .map(function (e) {
@@ -67,7 +71,7 @@ class Photograph {
     return information;
   }
 
-  get medias() {
+  /*get medias() {
     this.media.forEach((e) => {
       const factory = new Media(e);
       if (e.hasOwnProperty("image")) {
@@ -78,7 +82,7 @@ class Photograph {
         this.displayMediaCard(media.makeCard());
       }
     });
-  }
+  }*/
 
   displayMediaCard(media) {
     document.querySelector(".medias").innerHTML += media;

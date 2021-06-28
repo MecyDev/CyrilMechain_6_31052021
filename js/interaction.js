@@ -7,6 +7,9 @@ const inputs = document.querySelectorAll(".form__input");
 modalClose.addEventListener("click", closeModal, false);
 
 // Open modal form
+function openModal() {
+  modal.style.display = "block";
+}
 
 //close the modal
 function closeModal() {
