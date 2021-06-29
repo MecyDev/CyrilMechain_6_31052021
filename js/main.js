@@ -109,13 +109,13 @@ function factory(type, e) {
 }
 
 function media(m) {
+  let media;
   m.forEach((e) => {
     if (e.hasOwnProperty("image")) {
-      const media = factory("photo", e);
-      document.querySelector(".medias").innerHTML += media.makeCard;
+      media = factory("photo", e);
     } else {
-      const media = factory("video", e);
-      document.querySelector(".medias").innerHTML += media.makeCard;
+      media = factory("video", e);
     }
+    document.querySelector(".medias").innerHTML += media.makeCard;
   });
 }
