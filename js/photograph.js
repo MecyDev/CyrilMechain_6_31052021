@@ -12,15 +12,15 @@ class Photograph {
     this.tagline = photograph.tagline;
     this.price = photograph.price;
     this.portrait = photograph.portrait;
-    this.media = photograph.media;
+    this.media = photograph.medias;
   }
 
   get namePhotograph() {
     return this.name;
   }
 
-  get mediaTake() {
-    return this.media;
+  get priceDay() {
+    return this.price;
   }
 
   get card() {
@@ -53,26 +53,27 @@ class Photograph {
       <h1 class="informations__header">${this.name}</h1>
       <p class="informations__geo">${this.city}, ${this.country}</p>
       <p class="informations__tagline">${this.tagline}</p>
-      <div class="btn informations__contact">Contactez-moi</div>
+      <div class="btn btn--desktop informations__contact">Contactez-moi</div>
       <ul class="inline inline--nocenter">
     ${this.tags
       .map(function (e) {
-        return `<li class="tag"><strong>#${e}</strong></li>`;
+        return `<li class="tag tag--large"><strong>#${e}</strong></li>`;
       })
       .join("")}
     </ul>
     </div>
-    
-    
     <p class="informations__contImg"><img class="informations__img" src="./medias/Photo-id/${
       this.portrait
-    }" alt="${this.name}" /></p>
-    `;
+    }" alt="${this.name}" /></p>`;
     return information;
   }
 
-  displayMediaCard(media) {
-    document.querySelector(".medias").innerHTML += media;
+  get totalLikes() {
+    let total = 0;
+    this.media.forEach((e) => {
+      total += e.likes;
+    });
+    return total;
   }
 
   /*End Class*/

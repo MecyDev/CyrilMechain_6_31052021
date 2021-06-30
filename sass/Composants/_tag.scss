@@ -18,4 +18,11 @@
     background-color: $btn-bg-primary;
     color: $txt-primary-light;
   }
+
+  &--large {
+    @include medium {
+      font-size: 1.8rem;
+      line-height: 2.3rem;
+    }
+  }
 }

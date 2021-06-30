@@ -17,8 +17,14 @@ $label-color: #312e2e;
 /*modal color*/
 $modal_color: $btn-bg-secondary;
 
+/*recall color*/
+$recall-color: $btn-bg-secondary;
+
 /*card price color*/
 $txt-price-card-color: #757575;
+
+/*Backgroung color of section information desktop*/
+$info_bkg_color: #fafafa;
 
 //animation variable
 $modal-anim-duration: 0.8s;
@@ -26,6 +32,5 @@ $modal-anim-duration: 0.8s;
 /*breakpoints*/
 $breakpoints: (
   medium: 950px,
-  large: 1270px,
-  max: 1440px,
+  max: 1240px,
 );

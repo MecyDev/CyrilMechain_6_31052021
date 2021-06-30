@@ -14,10 +14,13 @@
   border: 0;
 
   &--desktop {
-    height: 69px;
-    font-size: 2rem;
-    line-height: 2.6rem;
+    @include medium {
+      height: 69px;
+      font-size: 2rem;
+      line-height: 2.6rem;
+    }
   }
+
   &__container {
     margin: 10px auto 0 auto;
   }

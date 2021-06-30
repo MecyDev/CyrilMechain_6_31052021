@@ -3,23 +3,38 @@
   width: 89.33vw;
   height: 58.13vw;
   margin-bottom: 10px;
+  @include medium {
+    width: 350px;
+    height: 351px;
+    margin-bottom: 30px;
+  }
 
   a {
     display: block;
-    width: 100%;
     height: 50.67vw;
     overflow: hidden;
     border-radius: 5px;
+    @include medium {
+      width: 350px;
+      height: 300px;
+    }
 
     img {
-      width: 100vw;
+      width: 100%;
       object-fit: cover;
+      @include medium {
+        width: 350px;
+        height: 300px;
+      }
     }
   }
 
   p {
     position: absolute;
     bottom: 2px;
+    @include medium {
+      bottom: 11px;
+    }
   }
 
   &__title {
@@ -27,16 +42,32 @@
     left: 0;
     font-size: 1.4rem;
     line-height: 1.8rem;
-
     color: $txt-secondary-cl;
+    @include medium {
+      width: 292px;
+      height: 31px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      font-size: 2.4rem;
+      line-height: 3.1rem;
+    }
   }
 
   &__likes {
+    position: absolute;
     right: 17px;
+    bottom: 150px;
     font-weight: 500;
     font-size: 1.4rem;
     line-height: 1.8rem;
+
     color: $txt-secondary-cl;
+    @include medium {
+      font-size: 2.4rem;
+      line-height: 3.1rem;
+      margin-right: 6px;
+    }
   }
 
   &__icon {
@@ -45,5 +76,9 @@
     right: 0;
     font-size: 1.07rem;
     color: $txt-secondary-cl;
+    @include medium {
+      font-size: 2rem;
+      bottom: 16px;
+    }
   }
 }

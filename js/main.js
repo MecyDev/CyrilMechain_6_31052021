@@ -74,6 +74,10 @@ function displayPhotograph(id) {
             photograph.information;
           media(jsonPhotograph.medias);
           document.querySelector(".modal__header").innerHTML += photograph.name;
+          document.querySelector(".recall__content").innerHTML += `
+          <p>${photograph.totalLikes}<i class="fas fa-heart recall__icon"></i></p>
+          <p>${photograph.priceDay}€ / jour</p>
+          `;
         }
       }
     }
