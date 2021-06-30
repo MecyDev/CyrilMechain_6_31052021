@@ -20,7 +20,14 @@
   position: absolute;
   left: 15px;
   content: " ";
-  height: 33px;
   width: 4px;
+  height: 33px;
+
   background-color: white;
+  @include medium {
+    top: 17px;
+    left: -20px;
+    width: 8px;
+    height: 66px;
+  }
 }

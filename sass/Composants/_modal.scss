@@ -8,6 +8,27 @@
   left: 0;
   z-index: 15;
   border-radius: 5px;
+  overflow: auto;
+
+  @include medium {
+    width: 670px;
+    height: 800px;
+    top: 50%;
+    left: 50%;
+    margin-top: -400px;
+    margin-left: -335px;
+    mix-blend-mode: normal;
+    filter: drop-shadow(-5px 10px 30px rgba(0, 0, 0, 0.25));
+  }
+
+  @include max {
+    width: 670px;
+    height: 900px;
+    top: 50%;
+    left: 50%;
+    margin-top: -450px;
+    margin-left: -335px;
+  }
 
   &__body {
     width: 90%;
@@ -21,6 +42,10 @@
     margin-bottom: 20px;
     font-size: 36px;
     line-height: 47px;
+    @include medium {
+      font-size: 6.6rem;
+      line-height: 8.3rem;
+    }
   }
 }
 

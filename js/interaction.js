@@ -1,5 +1,6 @@
 const modal = document.querySelector(".modal");
 const modalClose = document.querySelector(".close");
+const filter = document.querySelector(".filter");
 const submit = document.querySelector("#submit");
 const inputs = document.querySelectorAll(".form__input");
 
@@ -9,11 +10,13 @@ modalClose.addEventListener("click", closeModal, false);
 // Open modal form
 function openModal() {
   modal.style.display = "block";
+  filter.style.display = "block";
 }
 
 //close the modal
 function closeModal() {
   modal.style.display = "none";
+  filter.style.display = "none";
 }
 
 inputs.forEach(

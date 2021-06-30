@@ -12,6 +12,7 @@
   border-radius: 5px;
   z-index: 10;
   border: 0;
+  cursor: pointer;
 
   &--desktop {
     @include medium {
@@ -22,6 +23,15 @@
   }
 
   &__container {
-    margin: 10px auto 0 auto;
+    align-self: center;
+    margin-top: 8px;
+    @include medium {
+      align-self: flex-start;
+      margin-top: 24px;
+      margin-bottom: 38px;
+    }
+    @include max {
+      margin-bottom: 0;
+    }
   }
 }
