@@ -1,15 +1,20 @@
 .recall {
   display: none;
+  align-items: center;
+  justify-content: space-around;
   position: fixed;
   bottom: 0;
-  width: 1240px;
+  left: 76%;
+  transform: translateX(-50%);
+  width: 376px;
   height: 68px;
   z-index: 1;
+  background-color: $recall-color;
   @include max {
-    display: block;
+    display: flex;
   }
 
-  &__container {
+  /*&__container {
     position: relative;
     width: 100%;
     height: 100%;
@@ -25,7 +30,7 @@
     height: 100%;
     background-color: $recall-color;
     border-radius: 5px 5px 0 0;
-  }
+  }*/
 
   p {
     font-weight: 500;

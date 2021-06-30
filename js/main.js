@@ -14,6 +14,20 @@ if (param.has("photograph")) {
   displayPhotograph(photographId).then(() => {
     const contact = document.querySelector(".informations__contact");
     const arrMedia = Array.from(document.querySelectorAll(".cardmedia"));
+    const like = document.querySelectorAll(".cardmedia__icon");
+    const likes = document.querySelector("#totalLikes");
+
+    like.forEach((like) =>
+      like.addEventListener(
+        "click",
+        function () {
+          like.previousSibling.innerText =
+            parseInt(like.previousSibling.innerText) + 1;
+          likes.innerText = parseInt(likes.innerText) + 1;
+        },
+        false
+      )
+    );
 
     contact.addEventListener("click", openModal, false);
   });
@@ -74,8 +88,8 @@ function displayPhotograph(id) {
             photograph.information;
           media(jsonPhotograph.medias);
           document.querySelector(".modal__header").innerHTML += photograph.name;
-          document.querySelector(".recall__content").innerHTML += `
-          <p>${photograph.totalLikes}<i class="fas fa-heart recall__icon"></i></p>
+          document.querySelector(".recall").innerHTML += `
+          <p id="totalLikes">${photograph.totalLikes}<i class="fas fa-heart recall__icon"></i></p>
           <p>${photograph.priceDay}€ / jour</p>
           `;
         }
