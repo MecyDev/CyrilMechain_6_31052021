@@ -1,6 +1,6 @@
 .card {
   width: 301px;
-  @include large {
+  @include max {
     width: 26.3%;
   }
   margin-bottom: 30px;

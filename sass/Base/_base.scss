@@ -1,8 +1,6 @@
 html {
   font-family: $font-primary;
   font-size: 62.5%;
-  max-width: 1240px;
-  margin: 0 auto;
 }
 
 body {
@@ -16,10 +14,14 @@ main {
   flex-flow: row wrap;
   align-items: center;
   justify-content: center;
-  @include medium {
+  @include max {
     justify-content: space-between;
   }
   margin-top: 30px;
+}
+
+.home {
+  margin-top: 80px;
 }
 
 label {

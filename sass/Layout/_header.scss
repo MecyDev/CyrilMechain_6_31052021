@@ -19,7 +19,7 @@
 
   &__nav {
     width: 100vw;
-    @include large {
+    @include max {
       width: 600px;
       order: 2;
     }
@@ -28,13 +28,13 @@
 
   &__head {
     font-size: 3.73vw;
-    @include medium {
+    @include max {
       font-size: 36px;
     }
     line-height: 1.8rem;
     text-align: center;
     color: #911c1c;
-    @include large {
+    @include max {
       order: 3;
     }
   }
