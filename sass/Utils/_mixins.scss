@@ -22,8 +22,23 @@
   content: " ";
   width: 4px;
   height: 33px;
-
   background-color: white;
+  @include medium {
+    top: 17px;
+    left: -20px;
+    width: 8px;
+    height: 66px;
+  }
+}
+
+@mixin close-lb {
+  position: absolute;
+  left: 1px;
+  content: " ";
+  width: 2px;
+  height: 15px;
+  background-color: $btn-bg-primary;
+
   @include medium {
     top: 17px;
     left: -20px;

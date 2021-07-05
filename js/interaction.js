@@ -75,7 +75,3 @@ function validate() {
   //for keep form on screen when submit
   return false;
 }
-
-function lightbox(m) {
-  console.log("tadada!!!");
-}

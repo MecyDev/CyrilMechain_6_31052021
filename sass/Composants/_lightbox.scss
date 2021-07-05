@@ -1,14 +1,88 @@
 .lightbox {
-  display: none;
   position: fixed;
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
+  display: none;
+  justify-content: center;
+  align-items: center;
   background-color: $txt-primary_light;
   z-index: 10;
 
-  &-item {
+  &__container {
+    position: relative;
+    width: 91.2vw;
+    height: 66.13vw;
+    @include max {
+      width: 1253px;
+      height: 970px;
+    }
+
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+
+  &__navig {
+    font-size: 1.3rem;
+    @include max {
+      font-size: 4.8rem;
+    }
+    color: $btn-bg-primary;
+  }
+
+  figure {
+    width: 77.07vw;
+    height: 66.13vw;
+    @include max {
+      width: 1050px;
+      height: 900px;
+    }
+  }
+
+  figcaption {
+    font-size: 1.4rem;
+    line-height: 1.8rem;
+    @include max {
+      font-size: 2.4rem;
+      line-height: 3.1rem;
+      margin-top: 8px;
+    }
+
+    color: $btn-bg-primary;
+  }
+
+  &__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 5px;
+  }
+
+  &__close {
+    position: absolute;
+    right: 16px;
+    top: 2px;
+
+    @include max {
+      right: 20px;
+      top: 25px;
+      width: 32px;
+      height: 32px;
+    }
+
     cursor: pointer;
+    transform: scale(0.7);
+
+    &:before {
+      @include close-lb;
+      transform: rotate(45deg);
+    }
+
+    &:after {
+      @include close-lb;
+      transform: rotate(-45deg);
+    }
   }
 }
