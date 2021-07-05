@@ -4,6 +4,8 @@
   flex-wrap: wrap;
   justify-content: center;
   margin-top: 50px;
+  margin-bottom: 68px;
+
   @include medium {
     justify-content: space-between;
   }

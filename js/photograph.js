@@ -23,6 +23,28 @@ class Photograph {
     return this.price;
   }
 
+  tri(type) {
+    switch (type) {
+      case "Popularité":
+        this.media.sort(function (a, b) {
+          return parseInt(b.likes) > parseInt(a.likes) ? 1 : -1;
+        });
+        return this.media;
+      case "Date":
+        this.media.sort(function (a, b) {
+          return a.date > b.date ? 1 : -1;
+        });
+        return this.media;
+      case "Titre":
+        this.media.sort(function (a, b) {
+          return a.title > b.title ? 1 : -1;
+        });
+        return this.media;
+      default:
+        return false;
+    }
+  }
+
   get card() {
     const card = `<div class="card" id=${this.id}>
         <a class="card__link" href="http://${

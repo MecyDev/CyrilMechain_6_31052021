@@ -1,8 +1,9 @@
 const url = `http://${window.location.host}/js/json/FishEyeData.json`;
 const photograph = window.location.search;
-
 const tags = document.querySelectorAll(".tag");
+const select = document.querySelector("#tri-select");
 let listTags = [];
+let triType = "Popularité";
 
 const param = new URLSearchParams(photograph);
 
@@ -10,27 +11,25 @@ const jsonData = jData(url);
 
 if (param.has("photograph")) {
   const photographId = param.get("photograph");
-
-  displayPhotograph(photographId).then(() => {
-    const contact = document.querySelector(".informations__contact");
-    const arrMedia = Array.from(document.querySelectorAll(".cardmedia"));
-    const like = document.querySelectorAll(".cardmedia__icon");
-    const likes = document.querySelector("#totalLikes");
-
-    like.forEach((like) =>
-      like.addEventListener(
-        "click",
-        function () {
-          like.previousSibling.innerText =
-            parseInt(like.previousSibling.innerText) + 1;
-          likes.innerText = parseInt(likes.innerText) + 1;
-        },
-        false
-      )
-    );
-
-    contact.addEventListener("click", openModal, false);
+  let test = displayPhotograph(photographId).then(() => {
+    interact();
   });
+
+  select.addEventListener(
+    "change",
+    function () {
+      triType = select.value;
+      document.querySelector(".informations").innerHTML = "";
+      document.querySelector(".medias").innerHTML = "";
+      document.querySelector(".recall").innerHTML = "";
+      document.querySelector(".modal__header").innerHTML = "Contactez-moi ";
+
+      test = displayPhotograph(photographId).then(() => {
+        interact();
+      });
+    },
+    false
+  );
 } else {
   displayPhotograph();
 }
@@ -76,6 +75,7 @@ function displayPhotograph(id) {
           list.push(media);
         }
       }
+
       jsonPhotograph.medias = list;
 
       if (id === undefined && filterByTag(jsonPhotograph.tags)) {
@@ -86,7 +86,7 @@ function displayPhotograph(id) {
           const photograph = new Photograph(jsonPhotograph);
           document.querySelector(".informations").innerHTML +=
             photograph.information;
-          media(jsonPhotograph.medias);
+          media(photograph.tri(triType));
           document.querySelector(".modal__header").innerHTML += photograph.name;
           document.querySelector(".recall").innerHTML += `
           <p id="totalLikes">${photograph.totalLikes}<i class="fas fa-heart recall__icon"></i></p>
@@ -136,4 +136,30 @@ function media(m) {
     }
     document.querySelector(".medias").innerHTML += media.makeCard;
   });
+}
+
+function interact() {
+  const contact = document.querySelector(".informations__contact");
+  const like = document.querySelectorAll(".cardmedia__icon");
+  const likes = document.querySelector("#totalLikes");
+
+  const modal = document.querySelector(".modal");
+  const modalClose = document.querySelector(".close");
+  const filter = document.querySelector(".filter");
+  const submit = document.querySelector("#submit");
+  const inputs = document.querySelectorAll(".form__input");
+
+  like.forEach((like) =>
+    like.addEventListener(
+      "click",
+      function () {
+        like.previousSibling.innerText =
+          parseInt(like.previousSibling.innerText) + 1;
+        likes.innerText = parseInt(likes.innerText) + 1;
+      },
+      false
+    )
+  );
+
+  contact.addEventListener("click", openModal, false);
 }
