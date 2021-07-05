@@ -76,6 +76,7 @@
     right: 0;
     font-size: 1.07rem;
     color: $txt-secondary-cl;
+    cursor: pointer;
     @include medium {
       font-size: 2rem;
       bottom: 16px;

@@ -142,12 +142,13 @@ function interact() {
   const contact = document.querySelector(".informations__contact");
   const like = document.querySelectorAll(".cardmedia__icon");
   const likes = document.querySelector("#totalLikes");
-
   const modal = document.querySelector(".modal");
   const modalClose = document.querySelector(".close");
   const filter = document.querySelector(".filter");
   const submit = document.querySelector("#submit");
   const inputs = document.querySelectorAll(".form__input");
+  const medias = document.querySelectorAll(".lightbox-item");
+  const listMedia = Array.from(document.querySelectorAll(".cardmedia"));
 
   like.forEach((like) =>
     like.addEventListener(
@@ -162,4 +163,8 @@ function interact() {
   );
 
   contact.addEventListener("click", openModal, false);
+
+  medias.forEach((m) => {
+    m.addEventListener("click", lightbox, false);
+  });
 }

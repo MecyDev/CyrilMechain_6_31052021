@@ -3,6 +3,8 @@ const modalClose = document.querySelector(".close");
 const filter = document.querySelector(".filter");
 const submit = document.querySelector("#submit");
 const inputs = document.querySelectorAll(".form__input");
+const header = document.querySelector("header");
+const main = document.querySelector("main");
 
 // Close modal event
 modalClose.addEventListener("click", closeModal, false);
@@ -11,12 +13,18 @@ modalClose.addEventListener("click", closeModal, false);
 function openModal() {
   modal.style.display = "block";
   filter.style.display = "block";
+  modal.setAttribute("aria-hidden", "false");
+  header.setAttribute("aria-hidden", "true");
+  main.setAttribute("aria-hidden", "true");
 }
 
 //close the modal
 function closeModal() {
   modal.style.display = "none";
   filter.style.display = "none";
+  modal.setAttribute("aria-hidden", "true");
+  header.setAttribute("aria-hidden", "false");
+  main.setAttribute("aria-hidden", "false");
 }
 
 inputs.forEach(
@@ -66,4 +74,8 @@ function validate() {
 
   //for keep form on screen when submit
   return false;
+}
+
+function lightbox(m) {
+  console.log("tadada!!!");
 }

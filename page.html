@@ -12,6 +12,7 @@
     <title>FishEye -</title>
   </head>
   <body>
+
     <header class="header" role="banner">
       <a href="http://127.0.0.1:5500/" class="header__link">
         <img
@@ -22,6 +23,7 @@
         />
       </a>
     </header>
+
     <main>
       <section class="informations"></section>
       <div class="tri">
@@ -36,7 +38,8 @@
       <div class="recall"></div>
       <div class="filter"></div>
     </main>
-    <div class="modal" role="dialog">
+
+    <div class="modal" role="dialog" aria-hidden="true">
       <span class="close"></span>
       <div class="modal__body">
         <h1 class="modal__header">Contactez-moi </h1>
@@ -102,6 +105,9 @@
         </form>
       </div>
     </div>
+
+    <div class="lightbox" role="dialog" aria-hidden="true"></div>
+
     <script src="./js/photographManager.js"></script>
     <script src="./js/photograph.js"></script>
     <script src="./js/media.js"></script>
