@@ -1,4 +1,4 @@
-const url = `http://${window.location.host}/js/json/FishEyeData.json`;
+const url = `https://${window.location.host}/js/json/FishEyeData.json`;
 const photograph = window.location.search;
 const tags = document.querySelectorAll(".tag");
 const select = document.querySelector("#tri-select");
