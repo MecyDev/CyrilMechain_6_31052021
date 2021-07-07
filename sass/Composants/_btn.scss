@@ -34,4 +34,22 @@
       margin-bottom: 0;
     }
   }
+
+  &--content {
+    display: none;
+    position: fixed;
+    width: 182px;
+    height: 30px;
+    background-color: #db8876;
+    text-align: center;
+    padding-top: 3px;
+    top: 6px;
+    left: 50%;
+    transform: translateX(-50%);
+
+    a {
+      text-decoration: none;
+      color: black;
+    }
+  }
 }

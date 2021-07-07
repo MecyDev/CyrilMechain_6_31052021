@@ -2,6 +2,7 @@ const url = `http://${window.location.host}/js/json/FishEyeData.json`;
 const photograph = window.location.search;
 const tags = document.querySelectorAll(".tag");
 const select = document.querySelector("#tri-select");
+const contentBtn = document.querySelector(".btn--content");
 let listTags = [];
 let ListMedia;
 let triType = "Popularité";
@@ -33,6 +34,13 @@ if (param.has("photograph")) {
   );
 } else {
   displayPhotograph();
+
+  window.addEventListener("scroll", displayBtnContent, false);
+
+  function displayBtnContent() {
+    contentBtn.style.display = "block";
+    contentBtn.setAttribute("aria-hidden", "false");
+  }
 }
 
 tags.forEach(
@@ -90,7 +98,7 @@ function displayPhotograph(id) {
           media(photograph.tri(triType));
           document.querySelector(".modal__header").innerHTML += photograph.name;
           document.querySelector(".recall").innerHTML += `
-          <p id="totalLikes">${photograph.totalLikes}<i class="fas fa-heart recall__icon"></i></p>
+          <p id="totalLikes">${photograph.totalLikes}</p><i class="fas fa-heart recall__icon"></i>
           <p>${photograph.priceDay}€ / jour</p>
           `;
         }
@@ -158,8 +166,6 @@ function interact() {
       false
     )
   );
-
-  console.log(ListMedia);
 
   tt.forEach((e) =>
     e.addEventListener(

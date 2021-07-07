@@ -16,7 +16,10 @@
 
   &--select {
     background-color: $btn-bg-primary;
-    color: $txt-primary-light;
+
+    a {
+      color: $txt-primary-light;
+    }
   }
 
   &--large {

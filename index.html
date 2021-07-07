@@ -9,7 +9,10 @@
   </head>
   <body>
     <header class="header" role="banner">
-      <a href="#" class="header__link">
+      <p class="btn btn--content" aria-hidden="true">
+        <a href="#main"> Passer au contenu</a>
+      </p>
+      <a href="index.html" class="header__link">
         <img
           src="./logo/logo.svg"
           class="header__link__logo"
@@ -21,33 +24,41 @@
       <nav class="header__nav" aria-label="photographer categories">
         <ul class="inline">
           <li class="tag">
-            <strong>#<span>Portrait</span></strong>
+            <a href="#" aria-hidden="true">#Portrait</a
+            ><span class="sr-only">Portrait</span>
           </li>
           <li class="tag">
-            <strong>#<span>Art</span></strong>
+            <a href="#" aria-hidden="true">#Art</a
+            ><span class="sr-only">Art</span>
           </li>
           <li class="tag">
-            <strong>#<span>Fashion</span></strong>
+            <a href="#" aria-hidden="true">#Fashion</a
+            ><span class="sr-only">Fashion</span>
           </li>
           <li class="tag">
-            <strong>#<span>Architecture</span></strong>
+            <a href="#" aria-hidden="true">#Architecture</a
+            ><span class="sr-only">Architecture</span>
           </li>
           <li class="tag">
-            <strong>#<span>Travel</span></strong>
+            <a href="#" aria-hidden="true">#Travel</a
+            ><span class="sr-only">Travel</span>
           </li>
           <li class="tag">
-            <strong>#<span>Sport</span></strong>
+            <a href="#" aria-hidden="true">#Sport</a
+            ><span class="sr-only">Sport</span>
           </li>
           <li class="tag">
-            <strong>#<span>Animals</span></strong>
+            <a href="#" aria-hidden="true">#Animals</a
+            ><span class="sr-only">Animals</span>
           </li>
           <li class="tag">
-            <strong>#<span>Events</span></strong>
+            <a href="#" aria-hidden="true">#Events</a
+            ><span class="sr-only">Events</span>
           </li>
         </ul>
       </nav>
     </header>
-    <main class="home"></main>
+    <main class="home" id="main"></main>
     <script src="./js/photographManager.js"></script>
     <script src="./js/photograph.js"></script>
     <script src="./js/media.js"></script>
