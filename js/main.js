@@ -1,4 +1,4 @@
-const url = `https://${window.location.host}/js/json/FishEyeData.json`;
+const url = `http://${window.location.host}/js/json/FishEyeData.json`;
 const photograph = window.location.search;
 const tags = document.querySelectorAll(".tag");
 const select = document.querySelector("#tri-select");
@@ -41,24 +41,24 @@ if (param.has("photograph")) {
     contentBtn.style.display = "block";
     contentBtn.setAttribute("aria-hidden", "false");
   }
-}
 
-tags.forEach(
-  (tag) =>
-    tag.addEventListener("click", function (event) {
-      let tagName = tag.querySelector("span").innerHTML.toLowerCase();
-      if (tag.classList.contains("tag--select") == false) {
-        tag.classList.add("tag--select");
-        listTags.push(tagName);
-        displayPhotograph();
-      } else {
-        tag.classList.remove("tag--select");
-        listTags = listTags.filter((i) => i !== tagName);
-        displayPhotograph();
-      }
-    }),
-  false
-);
+  tags.forEach(
+    (tag) =>
+      tag.addEventListener("click", function (event) {
+        let tagName = tag.querySelector("span").innerHTML.toLowerCase();
+        if (tag.classList.contains("tag--select") == false) {
+          tag.classList.add("tag--select");
+          listTags.push(tagName);
+          displayPhotograph();
+        } else {
+          tag.classList.remove("tag--select");
+          listTags = listTags.filter((i) => i !== tagName);
+          displayPhotograph();
+        }
+      }),
+    false
+  );
+}
 
 async function jData(url) {
   const response = await fetch(url);
@@ -153,6 +153,7 @@ function interact() {
   const likes = document.querySelector("#totalLikes");
   const inputs = document.querySelectorAll(".form__input");
   const tt = document.querySelectorAll(".lightbox-item");
+  const tags = document.querySelectorAll(".tag");
   ListMedia = Array.from(document.querySelectorAll(".cardmedia"));
 
   like.forEach((like) =>
@@ -179,4 +180,21 @@ function interact() {
   );
 
   contact.addEventListener("click", openModal, false);
+
+  tags.forEach(
+    (tag) =>
+      tag.addEventListener("click", function (event) {
+        let tagName = tag.querySelector("span").innerHTML.toLowerCase();
+        if (tag.classList.contains("tag--select") == false) {
+          tag.classList.add("tag--select");
+          listTags.push(tagName);
+          displayPhotograph();
+        } else {
+          tag.classList.remove("tag--select");
+          listTags = listTags.filter((i) => i !== tagName);
+          displayPhotograph();
+        }
+      }),
+    false
+  );
 }
