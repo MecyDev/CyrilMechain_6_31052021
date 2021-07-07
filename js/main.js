@@ -3,6 +3,7 @@ const photograph = window.location.search;
 const tags = document.querySelectorAll(".tag");
 const select = document.querySelector("#tri-select");
 let listTags = [];
+let ListMedia;
 let triType = "Popularité";
 
 const param = new URLSearchParams(photograph);
@@ -144,6 +145,7 @@ function interact() {
   const likes = document.querySelector("#totalLikes");
   const inputs = document.querySelectorAll(".form__input");
   const tt = document.querySelectorAll(".lightbox-item");
+  ListMedia = Array.from(document.querySelectorAll(".cardmedia"));
 
   like.forEach((like) =>
     like.addEventListener(
@@ -152,6 +154,19 @@ function interact() {
         like.previousSibling.innerText =
           parseInt(like.previousSibling.innerText) + 1;
         likes.innerText = parseInt(likes.innerText) + 1;
+      },
+      false
+    )
+  );
+
+  console.log(ListMedia);
+
+  tt.forEach((e) =>
+    e.addEventListener(
+      "click",
+      function (event) {
+        event.preventDefault();
+        console.log("tadaaaa!");
       },
       false
     )

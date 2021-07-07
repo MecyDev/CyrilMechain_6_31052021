@@ -11,7 +11,7 @@ class Photo extends Media {
   get makeCard() {
     const display = `
     <article class="cardmedia">
-      <a href="./medias/${this.photographerId}/${this.image}" class=".lightbox-item">
+      <a href="./medias/${this.photographerId}/${this.image}" class="lightbox-item">
         <img src="./medias/${this.photographerId}/mini/${this.image}" alt="${this.title}">
       </a>
       <p class="cardmedia__title">${this.title}</p>

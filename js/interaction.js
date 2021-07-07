@@ -5,6 +5,9 @@ const submit = document.querySelector("#submit");
 const inputs = document.querySelectorAll(".form__input");
 const header = document.querySelector("header");
 const main = document.querySelector("main");
+const lightbox = document.querySelector(".lightbox");
+const lightboxClose = document.querySelector(".lightbox__close");
+const lightboxNav = document.querySelectorAll(".lightbox__navig");
 
 // Close modal event
 modalClose.addEventListener("click", closeModal, false);
@@ -27,6 +30,12 @@ function closeModal() {
   main.setAttribute("aria-hidden", "false");
 }
 
+//close the modal
+function closeLightbox() {
+  lightbox.style.display = "none";
+  lightbox.setAttribute("aria-hidden", "false");
+}
+
 inputs.forEach(
   (i) =>
     i.addEventListener("input", function () {
@@ -39,7 +48,21 @@ inputs.forEach(
   false
 );
 
+lightboxNav.forEach(
+  (nav) =>
+    nav.addEventListener("click", function () {
+      if (nav.classList.contains("fa-chevron-left")) {
+        console.log("left");
+      } else {
+        console.log("right");
+      }
+    }),
+  false
+);
+
 submit.addEventListener("click", validate, false);
+
+lightboxClose.addEventListener("click", closeLightbox, false);
 
 //Validate the form when click on button submit
 function validate() {
