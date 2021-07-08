@@ -24,6 +24,17 @@
         height: 170px;
       }
     }
+
+    &:focus {
+      border: 2px solid $btn-bg-primary;
+    }
+  }
+
+  &__label {
+    &--message {
+      margin-top: 10px;
+      margin-bottom: 5px;
+    }
   }
 
   &__error {

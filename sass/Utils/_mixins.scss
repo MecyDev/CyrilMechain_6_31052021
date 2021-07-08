@@ -18,16 +18,14 @@
 
 @mixin close {
   position: absolute;
-  left: 15px;
   content: " ";
   width: 4px;
   height: 33px;
   background-color: white;
   @include medium {
-    top: 17px;
-    left: -20px;
-    width: 8px;
-    height: 66px;
+    width: 7px;
+    height: 64px;
+    left: 28px;
   }
 }
 

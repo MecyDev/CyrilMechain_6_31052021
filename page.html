@@ -13,7 +13,7 @@
   </head>
   <body>
 
-    <header class="header" role="banner">
+    <header class="header" role="banner" aria-hidden="false">
       <a href="index.html" class="header__link">
         <img
           src="./logo/logo.svg"
@@ -24,11 +24,11 @@
       </a>
     </header>
 
-    <main>
+    <main aria-hidden="false">
       <section class="informations"></section>
       <div class="tri">
         <label for="tri-select">Trier par</label>
-        <select name="tri" id="tri-select">
+        <select name="trier par" id="tri-select">
           <option value="Popularité" selected>Popularité</option>
           <option value="Date">Date</option>
           <option value="Titre">Titre</option>
@@ -39,47 +39,42 @@
       <div class="filter"></div>
     </main>
 
-    <div class="modal" role="dialog" aria-hidden="true">
-      <span class="close"></span>
+    <div class="modal" role="dialog" aria-hidden="true" aria-labelledby="heading">
+      <a class="close" aria-label="fermer le formulaire de contact" tabindex="6"></a>
       <div class="modal__body">
-        <h1 class="modal__header">Contactez-moi </h1>
+        <h1 id="heading" class="modal__header">Contactez-moi </h1>
         <form
           class="form"
           name="contact"
           method="POST"
           novalidate
         >
-          <p>
-            <label for="first">Prénom</label>
-            <br />
+
+            <label for="prénom">Prénom</label>
             <input
               class="form__input"
               type="text"
-              id="first"
-              name="first"
+              id="prénom"
+              name="prénom"
               pattern="[a-zA-Z]{2,}"
               required
+              tabindex="1"
             />
             <span class="form__error">Veuillez entrer 2 caractères où plus.</span>
-            <br />
-          </p>
-          <p>
-            <label for="last">Nom</label>
-            <br />
+
+            <label for="nom">Nom</label>
             <input
               class="form__input"
               type="text"
-              id="last"
-              name="last"
+              id="nom"
+              name="nom"
               pattern="[a-zA-Z]{2,}"
               required
+              tabindex="2"
             />
             <span class="form__error">Veuillez entrer 2 caractères où plus.</span>
-            <br />
-          </p>
-          <p>
+
             <label for="email">E-mail</label>
-            <br />
             <input
               class="form__input"
               type="email"
@@ -87,20 +82,17 @@
               name="email"
               pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
               required
+              tabindex="3"
             />
             <span class="form__error">Veuillez entrer un e-mail valide.</span>
-            <br />
-          </p>
-          <p>
-            <label for="message">Votre Message</label>
-            <br />
-            <textarea class="form__input form__input--textarea" id="message" name="message" minlength="50" maxlength="250" required></textarea>
+
+            <label class="form__label--message" for="message">Votre Message</label>
+            <textarea class="form__input form__input--textarea" id="message" name="message" minlength="50" maxlength="250" required tabindex="4"></textarea>
             <span class="form__error">Merci de laisser un message entre 50 et 250 caractères.</span>
-            <br />
-          </p>
-          <p class="btn__container">
-            <input id="submit" class="btn btn--desktop" type="button" value="Envoyer" />
-          </p>
+          
+            <div class="btn__container">
+              <input id="submit" class="btn btn--desktop" type="button" value="Envoyer" aria-label="envoyer" tabindex="5"/>
+            </div>
         </div>
         </form>
       </div>

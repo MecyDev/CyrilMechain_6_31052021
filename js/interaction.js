@@ -16,6 +16,7 @@ modalClose.addEventListener("click", closeModal, false);
 function openModal() {
   modal.style.display = "block";
   filter.style.display = "block";
+  inputs[0].focus();
   modal.setAttribute("aria-hidden", "false");
   header.setAttribute("aria-hidden", "true");
   main.setAttribute("aria-hidden", "true");
@@ -31,9 +32,19 @@ function closeModal() {
 }
 
 //close the modal
+function openLightbox() {
+  lightbox.style.display = "flex";
+  lightbox.setAttribute("aria-hidden", "false");
+  main.setAttribute("aria-hidden", "true");
+  header.setAttribute("aria-hidden", "true");
+}
+
+//close the modal
 function closeLightbox() {
   lightbox.style.display = "none";
-  lightbox.setAttribute("aria-hidden", "false");
+  lightbox.setAttribute("aria-hidden", "true");
+  main.setAttribute("aria-hidden", "false");
+  header.setAttribute("aria-hidden", "false");
 }
 
 inputs.forEach(
@@ -78,8 +89,11 @@ function validate() {
     inputs.forEach(function (e) {
       if (e.validity.valid === false) {
         e.nextElementSibling.style.display = "inline";
+        e.style.border = "2px solid red";
       } else {
         e.nextElementSibling.style.display = "none";
+        e.setAttribute("aria-invalid", "false");
+        e.style.border = "2px solid green";
       }
     });
   } else {

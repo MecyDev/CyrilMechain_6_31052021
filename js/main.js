@@ -1,8 +1,9 @@
 const url = `http://${window.location.host}/js/json/FishEyeData.json`;
 const photograph = window.location.search;
-const tags = document.querySelectorAll(".tag");
+
 const select = document.querySelector("#tri-select");
 const contentBtn = document.querySelector(".btn--content");
+let tag = "";
 let listTags = [];
 let ListMedia;
 let triType = "Popularité";
@@ -32,32 +33,27 @@ if (param.has("photograph")) {
     },
     false
   );
+} else if (param.has("tag")) {
+  tag = param.get("tag");
+
+  displayPhotograph().then(() => {
+    const tagSelect = document.querySelectorAll(".tag");
+
+    tagSelect.forEach((e) => {
+      if (e.querySelector("span").innerText.toLocaleLowerCase() === tag) {
+        if (!e.classList.contains("tag--select"))
+          e.classList.add("tag--select");
+      }
+    }, false);
+
+    //end then
+  });
+
+  //end else if
 } else {
-  displayPhotograph();
-
-  window.addEventListener("scroll", displayBtnContent, false);
-
-  function displayBtnContent() {
-    contentBtn.style.display = "block";
-    contentBtn.setAttribute("aria-hidden", "false");
-  }
-
-  tags.forEach(
-    (tag) =>
-      tag.addEventListener("click", function (event) {
-        let tagName = tag.querySelector("span").innerHTML.toLowerCase();
-        if (tag.classList.contains("tag--select") == false) {
-          tag.classList.add("tag--select");
-          listTags.push(tagName);
-          displayPhotograph();
-        } else {
-          tag.classList.remove("tag--select");
-          listTags = listTags.filter((i) => i !== tagName);
-          displayPhotograph();
-        }
-      }),
-    false
-  );
+  displayPhotograph().then(() => {
+    interactHome();
+  });
 }
 
 async function jData(url) {
@@ -110,20 +106,16 @@ function displayPhotograph(id) {
 }
 
 function filterByTag(phTags) {
-  const find = listTags.every((tag) => {
-    if (phTags.includes(tag) || phTags.includes(this.without(tag))) {
-      return true;
-    }
-  });
+  if (tag === "") {
+    return true;
+  }
 
-  if (find === true) {
+  const find = phTags.includes(tag);
+
+  if (find == true) {
     return true;
   }
   return false;
-}
-
-function without(w) {
-  return w + "s";
 }
 
 function factory(type, e) {
@@ -153,7 +145,8 @@ function interact() {
   const likes = document.querySelector("#totalLikes");
   const inputs = document.querySelectorAll(".form__input");
   const tt = document.querySelectorAll(".lightbox-item");
-  const tags = document.querySelectorAll(".tag");
+  const tags = document.querySelectorAll(".tag--card");
+  const nav = document.querySelector("nav");
   ListMedia = Array.from(document.querySelectorAll(".cardmedia"));
 
   like.forEach((like) =>
@@ -173,28 +166,21 @@ function interact() {
       "click",
       function (event) {
         event.preventDefault();
-        console.log("tadaaaa!");
+        openLightbox();
       },
       false
     )
   );
 
   contact.addEventListener("click", openModal, false);
+}
 
-  tags.forEach(
-    (tag) =>
-      tag.addEventListener("click", function (event) {
-        let tagName = tag.querySelector("span").innerHTML.toLowerCase();
-        if (tag.classList.contains("tag--select") == false) {
-          tag.classList.add("tag--select");
-          listTags.push(tagName);
-          displayPhotograph();
-        } else {
-          tag.classList.remove("tag--select");
-          listTags = listTags.filter((i) => i !== tagName);
-          displayPhotograph();
-        }
-      }),
-    false
-  );
+function interactHome() {
+  const tags = document.querySelectorAll(".tag");
+  window.addEventListener("scroll", displayBtnContent, false);
+
+  function displayBtnContent() {
+    contentBtn.style.display = "block";
+    contentBtn.setAttribute("aria-hidden", "false");
+  }
 }

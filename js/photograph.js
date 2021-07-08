@@ -63,7 +63,7 @@ class Photograph {
         <ul class="inline">
         ${this.tags
           .map(function (e) {
-            return `<li class="tag"><a href="#" aria-hidden="true">#${e}</a><span class="sr-only">${e}</span></li>`;
+            return `<li class="tag tag--card"><a href="index.html?tag=${e}" aria-hidden="true">#${e}</a><span class="sr-only">${e}</span></li>`;
           })
           .join("")}
         </ul>
@@ -77,11 +77,11 @@ class Photograph {
       <h1 class="informations__header">${this.name}</h1>
       <p class="informations__geo">${this.city}, ${this.country}</p>
       <p class="informations__tagline">${this.tagline}</p>
-      <button type="btn" class="btn btn--desktop informations__contact">Contactez-moi</button>
+      <button type="btn" class="btn btn--desktop informations__contact" aria-label="contactez-moi">Contactez-moi</button>
       <ul class="inline inline--nocenter">
     ${this.tags
       .map(function (e) {
-        return `<li class="tag tag--large"><a href="#" aria-hidden="true">#${e}</a><span class="sr-only">${e}</span></li>`;
+        return `<li class="tag tag--large"><span class="sr-only">${e}</span><a href="index.html?tag=${e}" aria-hidden="true">#${e}</a></li>`;
       })
       .join("")}
     </ul>
