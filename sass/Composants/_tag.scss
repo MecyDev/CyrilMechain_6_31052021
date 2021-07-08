@@ -10,6 +10,10 @@
   color: $txt-secondary-cl;
   margin: 0 2px 6px 2px;
 
+  a {
+    color: $btn-bg-primary;
+  }
+
   &:hover {
     cursor: pointer;
   }
