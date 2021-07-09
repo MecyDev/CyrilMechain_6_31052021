@@ -12,7 +12,8 @@ class Video extends Media {
     const display = `
     <article class="cardmedia">
     <a href="./medias/${this.photographerId}/video/${this.video}" class="lightbox-item">
-        <img src="./medias/${this.photographerId}/video/thumbnail.jpg" alt="${this.title}, closeup view">
+      <video src="./medias/${this.photographerId}/video/${this.video}" poster="./medias/${this.photographerId}/video/thumbnail.jpg">
+</video>
         </a>
         <p class="cardmedia__title">${this.title}</p>
         <p class="cardmedia__likes">${this.likes}</p><i class="fas fa-heart cardmedia__icon" aria-label="likes"></i>
