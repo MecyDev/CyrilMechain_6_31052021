@@ -5,7 +5,6 @@ const select = document.querySelector("#tri-select");
 const contentBtn = document.querySelector(".btn--content");
 let tag = "";
 let listTags = [];
-let ListMedia;
 let triType = "Popularité";
 
 const param = new URLSearchParams(photograph);
@@ -118,24 +117,26 @@ function filterByTag(phTags) {
   return false;
 }
 
-function factory(type, e) {
+function factory(type, e, c) {
   switch (type) {
     case "photo":
-      return new Photo(e);
+      return new Photo(e, c);
     case "video":
-      return new Video(e);
+      return new Video(e, c);
   }
 }
 
 function media(m) {
   let media;
+  let c = 1;
   m.forEach((e) => {
     if (e.hasOwnProperty("image")) {
-      media = factory("photo", e);
+      media = factory("photo", e, c);
     } else {
-      media = factory("video", e);
+      media = factory("video", e, c);
     }
     document.querySelector(".medias").innerHTML += media.makeCard;
+    c++;
   });
 }
 
@@ -147,7 +148,15 @@ function interact() {
   const tt = document.querySelectorAll(".lightbox-item");
   const tags = document.querySelectorAll(".tag--card");
   const nav = document.querySelector("nav");
-  ListMedia = Array.from(document.querySelectorAll(".cardmedia"));
+  const totalMedia = Array.from(document.querySelectorAll(".cardmedia")).length;
+
+  /*ListMedia.forEach((m) => {
+    if (m.querySelector("img")) {
+      console.log(m.querySelector("img").src);
+    } else {
+      console.log("video");
+    }
+  }, false);*/
 
   like.forEach((like) =>
     like.addEventListener(
@@ -166,14 +175,28 @@ function interact() {
       "click",
       function (event) {
         event.preventDefault();
-        openLightbox();
+        openLightbox(event.target.outerHTML);
       },
       false
     )
   );
 
   contact.addEventListener("click", openModal, false);
+
+  //Open the lightbox
+  function openLightbox(e) {
+    lightbox.style.display = "flex";
+    lightbox.setAttribute("aria-hidden", "false");
+    main.setAttribute("aria-hidden", "true");
+    header.setAttribute("aria-hidden", "true");
+    document.querySelector("figure").innerHTML = e;
+    if (document.querySelector("figure video")) {
+      document.querySelector("figure video").setAttribute("controls", "");
+    }
+  }
 }
+
+//
 
 function interactHome() {
   const tags = document.querySelectorAll(".tag");

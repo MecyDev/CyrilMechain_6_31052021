@@ -32,14 +32,6 @@ function closeModal() {
 }
 
 //close the modal
-function openLightbox() {
-  lightbox.style.display = "flex";
-  lightbox.setAttribute("aria-hidden", "false");
-  main.setAttribute("aria-hidden", "true");
-  header.setAttribute("aria-hidden", "true");
-}
-
-//close the modal
 function closeLightbox() {
   lightbox.style.display = "none";
   lightbox.setAttribute("aria-hidden", "true");
@@ -112,3 +104,20 @@ function validate() {
   //for keep form on screen when submit
   return false;
 }
+
+window.addEventListener(
+  "keydown",
+  function (e) {
+    if (e.key === "Escape") {
+      if ((modal.style.display = "block")) {
+        closeModal();
+      }
+      if ((lightbox.style.display = "flex")) {
+        closeLightbox();
+      }
+    }
+
+    e.preventDefault();
+  },
+  true
+);
