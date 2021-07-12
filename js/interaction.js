@@ -5,8 +5,6 @@ const submit = document.querySelector("#submit");
 const inputs = document.querySelectorAll(".form__input");
 const header = document.querySelector("header");
 const main = document.querySelector("main");
-const lightbox = document.querySelector(".lightbox");
-const lightboxClose = document.querySelector(".lightbox__close");
 
 // Close modal event
 modalClose.addEventListener("click", closeModal, false);
@@ -14,7 +12,7 @@ modalClose.addEventListener("click", closeModal, false);
 // Open modal form
 function openModal() {
   modal.style.display = "block";
-  filter.style.display = "block";
+
   inputs[0].focus();
   modal.setAttribute("aria-hidden", "false");
   header.setAttribute("aria-hidden", "true");
@@ -24,19 +22,10 @@ function openModal() {
 //close the modal
 function closeModal() {
   modal.style.display = "none";
-  filter.style.display = "none";
+
   modal.setAttribute("aria-hidden", "true");
   header.setAttribute("aria-hidden", "false");
   main.setAttribute("aria-hidden", "false");
-}
-
-//close the modal
-function closeLightbox() {
-  lightbox.style.display = "none";
-  lightbox.classList.remove("active");
-  lightbox.setAttribute("aria-hidden", "true");
-  main.setAttribute("aria-hidden", "false");
-  header.setAttribute("aria-hidden", "false");
 }
 
 inputs.forEach(
@@ -52,8 +41,6 @@ inputs.forEach(
 );
 
 submit.addEventListener("click", validate, false);
-
-lightboxClose.addEventListener("click", closeLightbox, false);
 
 //Validate the form when click on button submit
 function validate() {

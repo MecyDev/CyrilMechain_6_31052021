@@ -9,6 +9,7 @@ class Photo extends Media {
     this.count = count;
   }
 
+  //Function for generate the Media Card Photo of Photograph.
   get makeCard() {
     const display = `
     <article class="cardmedia" >

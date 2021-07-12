@@ -9,6 +9,7 @@ class Video extends Media {
     this.count = count;
   }
 
+  //Function for generate the Media Card Video of Photograph.
   get makeCard() {
     const display = `
     <article class="cardmedia">

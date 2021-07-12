@@ -1,22 +1,32 @@
-const url = `http://${window.location.host}/js/json/FishEyeData.json`;
-const photograph = window.location.search;
+//Main JS
+
+const url = `http://${window.location.host}/js/json/FishEyeData.json`; //The Url of the JSon Data
+const photograph = window.location.search; //for get the parameter after "?"
 
 const select = document.querySelector("#tri-select");
 const contentBtn = document.querySelector(".btn--content");
-let tag = "";
-let listTags = [];
-let triType = "Popularité";
+
+let tag = ""; //The tag for filter Photographers
+
+let triType = "Popularité"; //The type of sort for sort medias on Photograph PAge
 
 const param = new URLSearchParams(photograph);
 
-const jsonData = jData(url);
+const jsonData = jData(url); //Use the function Jdata for take the json data
 
+//Main part of program. For genrate Home page and Photograph Page.
+
+//For generate Photograph Page.
 if (param.has("photograph")) {
+  //Get the ID in URl.
   const photographId = param.get("photograph");
-  let test = displayPhotograph(photographId).then(() => {
-    interact();
+
+  //Use function displayPhotograph() for generate the page
+  let showPhotogPage = displayPhotograph(photographId).then(() => {
+    interact(); //Function for all the interactions possible in the page
   });
 
+  //This part is for sort the medias and recall the displayPhotograph() with new order. Order by default is "Popularity"
   select.addEventListener(
     "change",
     function () {
@@ -26,15 +36,19 @@ if (param.has("photograph")) {
       document.querySelector(".recall").innerHTML = "";
       document.querySelector(".modal__header").innerHTML = "Contactez-moi ";
 
-      test = displayPhotograph(photographId).then(() => {
+      showPhotogPage = displayPhotograph(photographId).then(() => {
         interact();
       });
     },
     false
   );
-} else if (param.has("tag")) {
+}
+//This part is for filter Photographers By tag.
+else if (param.has("tag")) {
+  //Get the tag in Url
   tag = param.get("tag");
 
+  //Generate Home Page with only Photograph who match with tag
   displayPhotograph().then(() => {
     const tagSelect = document.querySelectorAll(".tag");
 
@@ -49,12 +63,18 @@ if (param.has("photograph")) {
   });
 
   //end else if
-} else {
+}
+//This part is for generate the Home Page with all Photographers without tag filter. Default Home Page.
+else {
   displayPhotograph().then(() => {
-    interactHome();
+    interactHome(); //Just for the button who appear when scroll down.
   });
 }
+//End Main Part.
 
+//This part contains all the function need for genrate page and interact with pages.
+
+//Function async for fetch the Json Data and return the Json() reponse.
 async function jData(url) {
   const response = await fetch(url);
 
@@ -66,32 +86,39 @@ async function jData(url) {
   }
 }
 
+//The principal function. Serve to diplay Photographers Cards or Photographers Pages.
 function displayPhotograph(id) {
+  //To empty section "main" in Home Page.
   if (id === undefined) {
     document.querySelector("main").innerHTML = "";
   }
 
+  //To browse any Photograph in the JSon Data file.
   const result = jsonData.then((jsonListPhotograph) => {
     for (let jsonPhotograph of jsonListPhotograph.photographers) {
       let list = [];
+      //Browse all Medias for find the medias that belong to the photographer and put them in the list array.
       for (let media of jsonListPhotograph.media) {
         if (media.photographerId === jsonPhotograph.id) {
           list.push(media);
         }
       }
 
-      jsonPhotograph.medias = list;
+      jsonPhotograph.medias = list; //Add the Array list in Photograph Datas.
 
+      //this part is for displays Photograph in section "main" of HOme Page. Use the function filterBytags() for filter By tag if tag are selectionned.
       if (id === undefined && filterByTag(jsonPhotograph.tags)) {
         const photograph = new Photograph(jsonPhotograph);
         document.querySelector("main").innerHTML += photograph.card;
       } else {
+        //This part is for the Photograph Page. If ID !empty this part generate the information page and display all medias of the Photograph.
         if (jsonPhotograph.id == id) {
           const photograph = new Photograph(jsonPhotograph);
           document.querySelector(".informations").innerHTML +=
             photograph.information;
-          media(photograph.tri(triType));
+          media(photograph.tri(triType)); //Get madias and the type of sort for sort medias.
           document.querySelector(".modal__header").innerHTML += photograph.name;
+          //Generate the part who show all likes and day price.
           document.querySelector(".recall").innerHTML += `
           <p id="totalLikes">${photograph.totalLikes}</p><i class="fas fa-heart recall__icon"></i>
           <p>${photograph.priceDay}€ / jour</p>
@@ -104,6 +131,7 @@ function displayPhotograph(id) {
   return result;
 }
 
+//Function for filter Photograph By tags. Return true if tag are empty or the tag match. Else return false.
 function filterByTag(phTags) {
   if (tag === "") {
     return true;
@@ -117,6 +145,8 @@ function filterByTag(phTags) {
   return false;
 }
 
+//Function factory for instantiate the good Class if media is Photo or Video.
+//Take 3 parameters : The type of media, the informations of media and a counter for generate an ID for media.
 function factory(type, e, c) {
   switch (type) {
     case "photo":
@@ -126,6 +156,8 @@ function factory(type, e, c) {
   }
 }
 
+//This function iterate on each media of a Photogtraph for find if Photo or Video and call the methods for display the card.
+// A counter is present for genrate an ID for all medias.
 function media(m) {
   let media;
   let c = 0;
@@ -140,22 +172,23 @@ function media(m) {
   });
 }
 
+//The main function for interact with Photograph Page.
 function interact() {
+  //All variables for select elments DOM.
   const contact = document.querySelector(".informations__contact");
   const like = document.querySelectorAll(".cardmedia__icon");
   const likes = document.querySelector("#totalLikes");
-  const inputs = document.querySelectorAll(".form__input");
   const itemsLightbox = document.querySelectorAll(".lightbox-item");
-  const tags = document.querySelectorAll(".tag--card");
-  const nav = document.querySelector("nav");
   const totalMedia = Array.from(document.querySelectorAll(".cardmedia")).length;
   const lightboxNav = document.querySelectorAll(".lightbox__navig");
   const lightbox = document.querySelector(".lightbox");
   const main = document.querySelector("main");
   const header = document.querySelector("header");
+  const lightboxClose = document.querySelector(".lightbox__close");
 
-  let currentMedia = 0;
+  let currentMedia = 0; //This variable serve for the lightbox. For know the current Media to display in.
 
+  //This function serve to increase likes for the media and increase the total likes.
   like.forEach((like) =>
     like.addEventListener(
       "click",
@@ -168,18 +201,23 @@ function interact() {
     )
   );
 
+  //This is for listen the click on a Media Card and Open the lightbox.
   itemsLightbox.forEach((e) =>
     e.addEventListener(
       "click",
       function (event) {
         event.preventDefault();
-        currentMedia = parseInt(event.target.id);
-        openLightbox(event.target.outerHTML);
+        currentMedia = parseInt(event.target.id); //get id of the element Photo or Video.
+        openLightbox(); //Call function for Open the Lighetbox.
       },
       false
     )
   );
 
+  //For close the lightbox
+  lightboxClose.addEventListener("click", closeLightbox, false);
+
+  //For nav elements of lightbox. On click call the incdecMedia function (for increase or decrease) and call the function lightboxCar() for display new media.
   lightboxNav.forEach(
     (nav) =>
       nav.addEventListener("click", function () {
@@ -193,8 +231,6 @@ function interact() {
       }),
     false
   );
-
-  contact.addEventListener("click", openModal, false);
 
   //Open the lightbox
   function openLightbox() {
@@ -216,6 +252,19 @@ function interact() {
     }
   }
 
+  //close the lightbox
+  function closeLightbox() {
+    lightbox.style.display = "none";
+    lightbox.classList.remove("active");
+    lightbox.setAttribute("aria-hidden", "true");
+    main.setAttribute("aria-hidden", "false");
+    header.setAttribute("aria-hidden", "false");
+  }
+
+  //For open the form modal when client on contact button.
+  contact.addEventListener("click", openModal, false);
+
+  //For detect button pressed. Escape for close modal and lightbox. ArrowLeft and ArrowRight for navigate on medias in lightbox.
   window.addEventListener(
     "keydown",
     function (e) {
@@ -240,6 +289,7 @@ function interact() {
     true
   );
 
+  //This function serve to increase or decrease the currentMedia variable.
   function incdecMedia(type) {
     if (type === "minus") {
       if (currentMedia > 0) {
@@ -250,6 +300,7 @@ function interact() {
         currentMedia++;
       }
     }
+    //This part are for change the color of chevron in left or right if the medias list is finish.
     if (currentMedia === 0) {
       document.querySelector(".fa-chevron-left").style.color = "grey";
     } else {
@@ -262,6 +313,7 @@ function interact() {
     }
   }
 
+  //This function serve to display Photo or Video and the title in the lightbox.
   function lightboxCar() {
     const m = document.getElementById(currentMedia);
     const t = m.parentElement.nextElementSibling.outerText;
@@ -276,8 +328,89 @@ function interact() {
   //end function interact
 }
 
-//
+//this part contains the form action
 
+const submit = document.querySelector("#submit");
+const inputs = document.querySelectorAll(".form__input");
+
+//For display error message when input text.
+inputs.forEach(
+  (i) =>
+    i.addEventListener("input", function () {
+      if (i.validity.valid === false) {
+        i.nextElementSibling.style.display = "inline";
+      } else {
+        i.nextElementSibling.style.display = "none";
+      }
+    }),
+  false
+);
+
+//On click on send button call the function validate.
+submit.addEventListener("click", validate, false);
+
+//Validate the form when click on button submit
+function validate() {
+  //Variables for select all inputs and form
+  const form = document.querySelector("form");
+
+  //Check for form validity
+  if (form.checkValidity() === false) {
+    inputs.forEach(function (e) {
+      if (e.validity.valid === false) {
+        e.nextElementSibling.style.display = "inline";
+        e.style.border = "2px solid red";
+      } else {
+        e.nextElementSibling.style.display = "none";
+        e.setAttribute("aria-invalid", "false");
+        e.style.border = "2px solid green";
+      }
+    });
+  } else {
+    inputs.forEach(function (e) {
+      console.log(e.value);
+    });
+
+    form.reset();
+
+    inputs.forEach(function (e) {
+      e.nextElementSibling.style.display = "none";
+      modal.style.display = "none";
+    });
+  }
+
+  //for keep form on screen when submit
+  return false;
+}
+
+// This part contains all other interact
+
+const modal = document.querySelector(".modal");
+const modalClose = document.querySelector(".close");
+const header = document.querySelector("header");
+const main = document.querySelector("main");
+
+// Close modal event
+modalClose.addEventListener("click", closeModal, false);
+
+// Open modal form
+function openModal() {
+  modal.style.display = "block";
+  inputs[0].focus();
+  modal.setAttribute("aria-hidden", "false");
+  header.setAttribute("aria-hidden", "true");
+  main.setAttribute("aria-hidden", "true");
+}
+
+//close the modal
+function closeModal() {
+  modal.style.display = "none";
+  modal.setAttribute("aria-hidden", "true");
+  header.setAttribute("aria-hidden", "false");
+  main.setAttribute("aria-hidden", "false");
+}
+
+//function for display button "Passer au contenu" in Home Page when scrool down
 function interactHome() {
   const tags = document.querySelectorAll(".tag");
   window.addEventListener("scroll", displayBtnContent, false);

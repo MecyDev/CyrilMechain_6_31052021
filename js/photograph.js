@@ -23,6 +23,7 @@ class Photograph {
     return this.price;
   }
 
+  //Function for sort Medias by Popularity, Date or Title
   tri(type) {
     switch (type) {
       case "Popularité":
@@ -45,6 +46,7 @@ class Photograph {
     }
   }
 
+  //Function for generate Photograph Card on Home Page
   get card() {
     const card = `<div class="card" id=${this.id} aria-description="${
       this.name
@@ -71,6 +73,7 @@ class Photograph {
     return card;
   }
 
+  //Function for generate the information of Photograph for Photograph Page.
   get information() {
     const information = `
     <div class="informations__container">
@@ -92,6 +95,7 @@ class Photograph {
     return information;
   }
 
+  //function for calculate all likes
   get totalLikes() {
     let total = 0;
     this.media.forEach((e) => {

@@ -1,5 +1,5 @@
 /**
- * The factory class for generate photo or video object
+ * The parent Class for Class Photo and Class Video
  */
 
 class Media {

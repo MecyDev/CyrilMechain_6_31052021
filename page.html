@@ -39,6 +39,7 @@
       <div class="filter"></div>
     </main>
 
+<!-- Modal form -->
     <div class="modal" role="dialog" aria-hidden="true" aria-labelledby="heading">
       <a class="close" aria-label="fermer le formulaire de contact" tabindex="6"></a>
       <div class="modal__body">
@@ -97,13 +98,15 @@
         </form>
       </div>
     </div>
+    <!-- end Modal form -->
 
+    <!-- Lightbox -->
     <div class="lightbox" role="dialog" aria-hidden="true" aria-label="image closeup view">
       <div class="lightbox__container">
-        <a href="#" class="lightbox__close"></a>
-        <button type="button" class="btn--nav" id="left"><i class="fas fa-chevron-left lightbox__navig"></i></button>
+        <a class="lightbox__close" aria-label="fermer la lightbox." tabindex="3"></a>
+        <button type="button" class="btn--nav" id="left"><i class="fas fa-chevron-left lightbox__navig" tabindex="1"></i></button>
           <figure></figure>
-        <button type="button" class="btn--nav" id="right"><i class="fas fa-chevron-right lightbox__navig"></i></a>
+        <button type="button" class="btn--nav" id="right"><i class="fas fa-chevron-right lightbox__navig" tabindex="2"></i></a>
       </div>
     </div>
 
@@ -112,7 +115,5 @@
     <script src="./js/photo.js"></script>
     <script src="./js/video.js"></script>
     <script src="./js/main.js"></script>
-    <script src="./js/interaction.js"></script>
-    <script src="./js/lightbox.js"></script>
   </body>
 </html>
