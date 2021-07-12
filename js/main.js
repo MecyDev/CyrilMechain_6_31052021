@@ -1,6 +1,6 @@
 //Main JS
 
-const url = `http://${window.location.host}/js/json/FishEyeData.json`; //The Url of the JSon Data
+const url = `https://${window.location.host}/js/json/FishEyeData.json`; //The Url of the JSon Data
 const photograph = window.location.search; //for get the parameter after "?"
 
 const select = document.querySelector("#tri-select");
