@@ -128,7 +128,7 @@ function factory(type, e, c) {
 
 function media(m) {
   let media;
-  let c = 1;
+  let c = 0;
   m.forEach((e) => {
     if (e.hasOwnProperty("image")) {
       media = factory("photo", e, c);
@@ -145,18 +145,16 @@ function interact() {
   const like = document.querySelectorAll(".cardmedia__icon");
   const likes = document.querySelector("#totalLikes");
   const inputs = document.querySelectorAll(".form__input");
-  const tt = document.querySelectorAll(".lightbox-item");
+  const itemsLightbox = document.querySelectorAll(".lightbox-item");
   const tags = document.querySelectorAll(".tag--card");
   const nav = document.querySelector("nav");
   const totalMedia = Array.from(document.querySelectorAll(".cardmedia")).length;
+  const lightboxNav = document.querySelectorAll(".lightbox__navig");
+  const lightbox = document.querySelector(".lightbox");
+  const main = document.querySelector("main");
+  const header = document.querySelector("header");
 
-  /*ListMedia.forEach((m) => {
-    if (m.querySelector("img")) {
-      console.log(m.querySelector("img").src);
-    } else {
-      console.log("video");
-    }
-  }, false);*/
+  let currentMedia = 0;
 
   like.forEach((like) =>
     like.addEventListener(
@@ -170,30 +168,112 @@ function interact() {
     )
   );
 
-  tt.forEach((e) =>
+  itemsLightbox.forEach((e) =>
     e.addEventListener(
       "click",
       function (event) {
         event.preventDefault();
+        currentMedia = parseInt(event.target.id);
         openLightbox(event.target.outerHTML);
       },
       false
     )
   );
 
+  lightboxNav.forEach(
+    (nav) =>
+      nav.addEventListener("click", function () {
+        if (nav.parentElement.id === "left") {
+          incdecMedia("minus");
+          lightboxCar();
+        } else if (nav.parentElement.id === "right") {
+          incdecMedia("plus");
+          lightboxCar();
+        }
+      }),
+    false
+  );
+
   contact.addEventListener("click", openModal, false);
 
   //Open the lightbox
-  function openLightbox(e) {
+  function openLightbox() {
     lightbox.style.display = "flex";
+    lightbox.classList.add("active");
     lightbox.setAttribute("aria-hidden", "false");
     main.setAttribute("aria-hidden", "true");
     header.setAttribute("aria-hidden", "true");
-    document.querySelector("figure").innerHTML = e;
+    lightboxCar();
+    if (currentMedia === 0) {
+      document.querySelector(".fa-chevron-left").style.color = "grey";
+    } else {
+      document.querySelector(".fa-chevron-left").style.color = "#901c1c";
+    }
+    if (currentMedia === totalMedia - 1) {
+      document.querySelector(".fa-chevron-right").style.color = "grey";
+    } else {
+      document.querySelector(".fa-chevron-right").style.color = "#901c1c";
+    }
+  }
+
+  window.addEventListener(
+    "keydown",
+    function (e) {
+      if (e.key === "Escape") {
+        closeModal();
+        closeLightbox();
+      }
+
+      if (e.key === "ArrowLeft") {
+        if (lightbox.classList.contains("active")) {
+          incdecMedia("minus");
+          lightboxCar();
+        }
+      }
+      if (e.key === "ArrowRight") {
+        if (lightbox.classList.contains("active")) {
+          incdecMedia("plus");
+          lightboxCar();
+        }
+      }
+    },
+    true
+  );
+
+  function incdecMedia(type) {
+    if (type === "minus") {
+      if (currentMedia > 0) {
+        currentMedia--;
+      }
+    } else {
+      if (currentMedia < totalMedia - 1) {
+        currentMedia++;
+      }
+    }
+    if (currentMedia === 0) {
+      document.querySelector(".fa-chevron-left").style.color = "grey";
+    } else {
+      document.querySelector(".fa-chevron-left").style.color = "#901c1c";
+    }
+    if (currentMedia === totalMedia - 1) {
+      document.querySelector(".fa-chevron-right").style.color = "grey";
+    } else {
+      document.querySelector(".fa-chevron-right").style.color = "#901c1c";
+    }
+  }
+
+  function lightboxCar() {
+    const m = document.getElementById(currentMedia);
+    const t = m.parentElement.nextElementSibling.outerText;
+    document.querySelector(
+      "figure"
+    ).innerHTML = `${m.outerHTML}<figcaption>${t}</figcaption>`;
     if (document.querySelector("figure video")) {
       document.querySelector("figure video").setAttribute("controls", "");
     }
   }
+
+  //end function interact
 }
 
 //

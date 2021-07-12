@@ -7,7 +7,6 @@ const header = document.querySelector("header");
 const main = document.querySelector("main");
 const lightbox = document.querySelector(".lightbox");
 const lightboxClose = document.querySelector(".lightbox__close");
-const lightboxNav = document.querySelectorAll(".lightbox__navig");
 
 // Close modal event
 modalClose.addEventListener("click", closeModal, false);
@@ -34,6 +33,7 @@ function closeModal() {
 //close the modal
 function closeLightbox() {
   lightbox.style.display = "none";
+  lightbox.classList.remove("active");
   lightbox.setAttribute("aria-hidden", "true");
   main.setAttribute("aria-hidden", "false");
   header.setAttribute("aria-hidden", "false");
@@ -46,18 +46,6 @@ inputs.forEach(
         i.nextElementSibling.style.display = "inline";
       } else {
         i.nextElementSibling.style.display = "none";
-      }
-    }),
-  false
-);
-
-lightboxNav.forEach(
-  (nav) =>
-    nav.addEventListener("click", function () {
-      if (nav.classList.contains("fa-chevron-left")) {
-        console.log("left");
-      } else {
-        console.log("right");
       }
     }),
   false
@@ -104,20 +92,3 @@ function validate() {
   //for keep form on screen when submit
   return false;
 }
-
-window.addEventListener(
-  "keydown",
-  function (e) {
-    if (e.key === "Escape") {
-      if ((modal.style.display = "block")) {
-        closeModal();
-      }
-      if ((lightbox.style.display = "flex")) {
-        closeLightbox();
-      }
-    }
-
-    e.preventDefault();
-  },
-  true
-);
