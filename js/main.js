@@ -239,6 +239,7 @@ function interact() {
     lightbox.setAttribute("aria-hidden", "false");
     main.setAttribute("aria-hidden", "true");
     header.setAttribute("aria-hidden", "true");
+    document.querySelector('#left').focus();
     lightboxCar();
     if (currentMedia === 0) {
       document.querySelector(".fa-chevron-left").style.color = "grey";
