@@ -1,3 +1,5 @@
+/* eslint-disable class-methods-use-this */
+/* eslint-disable no-unused-vars */
 /**
  * The parent Class for Class Photo and Class Video
  */
@@ -15,6 +17,6 @@ class Media {
   }
 
   get makeCard() {
-    return "Aucuns medias !";
+    return 'Aucuns medias !';
   }
 }

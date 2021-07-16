@@ -1,3 +1,5 @@
+/* eslint-disable linebreak-style */
+/* eslint-disable no-unused-vars */
 /**
  * The class who represent a Photograph
  */
@@ -23,40 +25,34 @@ class Photograph {
     return this.price;
   }
 
-  //Function for sort Medias by Popularity, Date or Title
+  // Function for sort Medias by Popularity, Date or Title
   tri(type) {
     switch (type) {
-      case "Popularité":
-        this.media.sort(function (a, b) {
-          return parseInt(b.likes) > parseInt(a.likes) ? 1 : -1;
-        });
+      case 'Popularité':
+        this.media.sort((a, b) => (parseInt(b.likes, 10) > parseInt(a.likes, 10) ? 1 : -1));
         return this.media;
-      case "Date":
-        this.media.sort(function (a, b) {
-          return a.date > b.date ? 1 : -1;
-        });
+      case 'Date':
+        this.media.sort((a, b) => (a.date > b.date ? 1 : -1));
         return this.media;
-      case "Titre":
-        this.media.sort(function (a, b) {
-          return a.title > b.title ? 1 : -1;
-        });
+      case 'Titre':
+        this.media.sort((a, b) => (a.title > b.title ? 1 : -1));
         return this.media;
       default:
         return false;
     }
   }
 
-  //Function for generate Photograph Card on Home Page
+  // Function for generate Photograph Card on Home Page
   get card() {
     const card = `<div class="card" id=${this.id} aria-description="${
       this.name
     }">
         <a class="card__link" href="http://${
-          window.location.host
-        }/page.html?photograph=${this.id}">
+  window.location.host
+}/page.html?photograph=${this.id}">
           <img class="card__img" src="./medias/Photo-id/${
-            this.portrait
-          }" alt="${this.name}" />
+  this.portrait
+}" alt="${this.name}" />
           <h2 class="card__h2">${this.name}</h2>
         </a>
         <p class="card__from">${this.city}, ${this.country}</p>
@@ -64,16 +60,14 @@ class Photograph {
         <p class="card__price">${this.price}€/jour</p>
         <ul class="inline">
         ${this.tags
-          .map(function (e) {
-            return `<li class="tag tag--card"><a href="index.html?tag=${e}" aria-hidden="true">#${e}</a><span class="sr-only">${e}</span></li>`;
-          })
-          .join("")}
+    .map((e) => `<li class="tag tag--card"><a href="index.html?tag=${e}" aria-hidden="true">#${e}</a><span class="sr-only">${e}</span></li>`)
+    .join('')}
         </ul>
       </div>`;
     return card;
   }
 
-  //Function for generate the information of Photograph for Photograph Page.
+  // Function for generate the information of Photograph for Photograph Page.
   get information() {
     const information = `
     <div class="informations__container">
@@ -83,19 +77,17 @@ class Photograph {
       <button type="btn" class="btn btn--desktop informations__contact" aria-label="contactez-moi">Contactez-moi</button>
       <ul class="inline inline--nocenter">
     ${this.tags
-      .map(function (e) {
-        return `<li class="tag tag--large"><span class="sr-only">${e}</span><a href="index.html?tag=${e}" aria-hidden="true">#${e}</a></li>`;
-      })
-      .join("")}
+    .map((e) => `<li class="tag tag--large"><span class="sr-only">${e}</span><a href="index.html?tag=${e}" aria-hidden="true">#${e}</a></li>`)
+    .join('')}
     </ul>
     </div>
     <p class="informations__contImg"><img class="informations__img" src="./medias/Photo-id/${
-      this.portrait
-    }" alt="${this.name}" /></p>`;
+  this.portrait
+}" alt="${this.name}" /></p>`;
     return information;
   }
 
-  //function for calculate all likes
+  // function for calculate all likes
   get totalLikes() {
     let total = 0;
     this.media.forEach((e) => {
@@ -104,5 +96,5 @@ class Photograph {
     return total;
   }
 
-  /*End Class*/
+  /* End Class */
 }

@@ -1,3 +1,5 @@
+/* eslint-disable no-undef */
+/* eslint-disable no-unused-vars */
 /**
  * The class who represent a Video
  */
@@ -9,7 +11,7 @@ class Video extends Media {
     this.count = count;
   }
 
-  //Function for generate the Media Card Video of Photograph.
+  // Function for generate the Media Card Video of Photograph.
   get makeCard() {
     const display = `
     <article class="cardmedia">
