@@ -184,7 +184,6 @@ function interact() {
   const lightbox = document.querySelector(".lightbox");
   const main = document.querySelector("main");
   const header = document.querySelector("header");
-  const modalClose = document.querySelector(".close");
   const lightboxClose = document.querySelector(".lightbox__close");
 
   let currentMedia = 0; //This variable serve for the lightbox. For know the current Media to display in.
@@ -300,9 +299,6 @@ function interact() {
         if(lightboxClose === focused) {
           closeLightbox();
         }
-        if(modalClose === focused) {
-          closeModal();
-        }
       }
     },
     true
@@ -365,9 +361,6 @@ inputs.forEach(
   false
 );
 
-//On click on send button call the function validate.
-submit.addEventListener("click", validate, false);
-
 //Validate the form when click on button submit
 function validate() {
   //Variables for select all inputs and form
@@ -402,6 +395,12 @@ function validate() {
   return false;
 }
 
+//On click on send button call the function validate.
+if(submit != undefined) {
+  submit.addEventListener("click", validate, false);
+}
+
+
 // This part contains all other interact
 
 const modal = document.querySelector(".modal");
@@ -410,7 +409,10 @@ const header = document.querySelector("header");
 const main = document.querySelector("main");
 
 // Close modal event
-modalClose.addEventListener("click", closeModal, false);
+if(modalClose != undefined) {
+  modalClose.addEventListener("click", closeModal, false);
+}
+
 
 // Open modal form
 function openModal() {
