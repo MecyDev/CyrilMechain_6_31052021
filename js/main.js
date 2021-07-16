@@ -184,6 +184,7 @@ function interact() {
   const lightbox = document.querySelector(".lightbox");
   const main = document.querySelector("main");
   const header = document.querySelector("header");
+  const modalClose = document.querySelector(".close");
   const lightboxClose = document.querySelector(".lightbox__close");
 
   let currentMedia = 0; //This variable serve for the lightbox. For know the current Media to display in.
@@ -298,6 +299,9 @@ function interact() {
         }
         if(lightboxClose === focused) {
           closeLightbox();
+        }
+        if(modalClose === focused) {
+          closeModal();
         }
       }
     },
