@@ -1,6 +1,6 @@
 //Main JS
 
-const url = `https://${window.location.host}/js/json/FishEyeData.json`; //The Url of the JSon Data
+const url = `http://${window.location.host}/js/json/FishEyeData.json`; //The Url of the JSon Data
 const photograph = window.location.search; //for get the parameter after "?"
 
 const select = document.querySelector("#tri-select");
@@ -195,8 +195,8 @@ function interact() {
       "click",
       function () {
         like.previousSibling.innerText =
-          parseInt(like.previousSibling.innerText) + 1;
-        likes.innerText = parseInt(likes.innerText) + 1;
+          parseInt(like.previousSibling.innerText, 10) + 1;
+        likes.innerText = parseInt(likes.innerText, 10) + 1;
       },
       false
     )
@@ -209,7 +209,7 @@ function interact() {
       function (event) {
         event.preventDefault();
         currentMedia = parseInt(event.target.id); //get id of the element Photo or Video.
-        openLightbox(); //Call function for Open the Lighetbox.
+        openLightbox(); //Call function for Open the Lightbox.
       },
       false
     )
@@ -270,6 +270,7 @@ function interact() {
   window.addEventListener(
     "keydown",
     function (e) {
+      console.log(e)
       if (e.key === "Escape") {
         closeModal();
         closeLightbox();
@@ -288,7 +289,7 @@ function interact() {
         }
       }
       if(e.key === "Enter") {
-        var focused = document.activeElement;
+        const focused = document.activeElement;
         if(document.querySelector('#left') === focused) {
           incdecMedia("minus");
           lightboxCar();
