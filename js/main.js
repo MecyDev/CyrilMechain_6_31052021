@@ -286,6 +286,20 @@ function interact() {
           lightboxCar();
         }
       }
+      if(e.key === "Enter") {
+        var focused = document.activeElement;
+        if(document.querySelector('#left') === focused) {
+          incdecMedia("minus");
+          lightboxCar();
+        }
+        if(document.querySelector('#right') === focused) {
+          incdecMedia("plus");
+          lightboxCar();
+        }
+        if(lightboxClose === focused) {
+          closeLightbox();
+        }
+      }
     },
     true
   );
