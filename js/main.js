@@ -298,7 +298,10 @@ function interact() {
           lightboxCar();
         }
         if(lightboxClose === focused) {
-          modalClose();
+          closeLightbox();
+        }
+        if(modalClose === focused) {
+          closeModal();
         }
       }
     },
