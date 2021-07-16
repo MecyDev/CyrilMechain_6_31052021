@@ -61,15 +61,18 @@
   }
 
   &__close {
+    display: block;
     position: absolute;
-    right: 16px;
-    top: 2px;
+    right: 10px;
+    top: 0;
+    width: 13px;
+    height: 13px;   
 
     @include max {
-      right: 20px;
-      top: 25px;
-      width: 32px;
-      height: 32px;
+      right: 30px;
+      top: 35px;
+      width: 54px;
+      height: 54px;
     }
 
     cursor: pointer;
