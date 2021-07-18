@@ -15,8 +15,8 @@ class Video extends Media {
   get makeCard() {
     const display = `
     <article class="cardmedia">
-      <a href="./medias/${this.photographerId}/video/${this.video}" class="lightbox-item">
-        <video src="./medias/${this.photographerId}/video/${this.video}" poster="./medias/${this.photographerId}/video/thumbnail.jpg" class="lightbox__img" id="${this.count}">
+      <a href="./medias/${this.photographerId}/video/${this.video}" class="lightbox-item" tabindex="-1">
+        <video src="./medias/${this.photographerId}/video/${this.video}" poster="./medias/${this.photographerId}/video/thumbnail.jpg" class="lightbox__img" id="${this.count}" tabindex="2">
         ${this.altText}
         </video>
       </a>
