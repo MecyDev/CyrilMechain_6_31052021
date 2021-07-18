@@ -71,16 +71,18 @@ class Photograph {
   get information() {
     const information = `
     <div class="informations__container">
+    <div class="informations__cobut">
       <h1 class="informations__header">${this.name}</h1>
+      <button type="btn" class="btn btn--desktop informations__contact" aria-label="contactez-moi">Contactez-moi</button>
+    </div>
       <p class="informations__geo">${this.city}, ${this.country}</p>
       <p class="informations__tagline">${this.tagline}</p>
-      <button type="btn" class="btn btn--desktop informations__contact" aria-label="contactez-moi">Contactez-moi</button>
       <ul class="inline inline--nocenter">
-    ${this.tags
+      ${this.tags
     .map((e) => `<li class="tag tag--large"><span class="sr-only">${e}</span><a href="index.html?tag=${e}" aria-hidden="true">#${e}</a></li>`)
     .join('')}
-    </ul>
-    </div>
+      </ul>
+      </div>
     <p class="informations__contImg"><img class="informations__img" src="./medias/Photo-id/${
   this.portrait
 }" alt="${this.name}" /></p>`;

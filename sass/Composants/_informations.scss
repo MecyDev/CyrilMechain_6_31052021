@@ -3,7 +3,7 @@
   flex-wrap: wrap;
   width: 100%;
   @include medium {
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
     background-color: $info_bkg_color;
     border-radius: 5px;
@@ -16,8 +16,11 @@
   &__container {
     width: 230px;
     @include medium {
-      width: 33vw;
+      width: 60vw;
       position: relative;
+    }
+    @include max {
+      width: 840px;
     }
   }
 
@@ -59,12 +62,8 @@
     left: 50%;
     transform: translateX(-50%);
     @include medium {
-      position: absolute;
-      top: 0;
-      left: 100%;
-      @include max {
-        left: 65%;
-      }
+      margin-left: 100px;
+      position: inherit;
       transform: none;
     }
   }
@@ -89,5 +88,9 @@
     overflow: hidden;
     border-radius: 100%;
     box-shadow: 0px 2px 8px rgb(216, 216, 216);
+  }
+
+  &__cobut {
+    display: flex;
   }
 }
