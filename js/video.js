@@ -17,6 +17,7 @@ class Video extends Media {
     <article class="cardmedia">
       <a href="./medias/${this.photographerId}/video/${this.video}" class="lightbox-item">
         <video src="./medias/${this.photographerId}/video/${this.video}" poster="./medias/${this.photographerId}/video/thumbnail.jpg" class="lightbox__img" id="${this.count}">
+        ${this.altText}
         </video>
       </a>
       <p class="cardmedia__title">${this.title}</p>

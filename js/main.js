@@ -9,7 +9,7 @@
 // Main JS
 
 // The Url of the JSon Data
-const url = `https://${window.location.host}/js/json/FishEyeData.json`;
+const url = `http://${window.location.host}/js/json/FishEyeData_m.json`;
 const uriParam = window.location.search; // for get the parameter after "?"
 
 const select = document.querySelector('#tri-select');
@@ -122,7 +122,7 @@ function displayPhotograph(id) {
       if (id === undefined && filterByTag(jsonPhotograph.tags)) {
         const photograph = new Photograph(jsonPhotograph);
         document.querySelector('main').innerHTML += photograph.card;
-      } else if (jsonPhotograph.id === id) {
+      } else if (parseInt(jsonPhotograph.id, 10) === parseInt(id, 10)) {
         // This part is for the Photograph Page. If ID !empty this part generate
         // the information page and display all medias of the Photograph.
 
@@ -195,7 +195,7 @@ function interact() {
   const contact = document.querySelector('.informations__contact');
   const like = document.querySelectorAll('.cardmedia__icon');
   const likes = document.querySelector('#totalLikes');
-  const itemsLightbox = document.querySelectorAll('.lightbox-item');
+  const itemsLightbox = document.querySelectorAll('.cardmedia');
   const totalMedia = Array.from(document.querySelectorAll('.cardmedia')).length;
   const lightboxNav = document.querySelectorAll('.lightbox__navig');
   const lightbox = document.querySelector('.lightbox');
@@ -222,7 +222,13 @@ function interact() {
     'click',
     (event) => {
       event.preventDefault();
-      currentMedia = parseInt(event.target.id, 10); // get id of the element Photo or Video.
+      const testy = parseInt(event.target.id, 10);
+      // eslint-disable-next-line no-restricted-globals
+      if (isNaN(testy)) {
+        currentMedia = parseInt(event.target.firstElementChild.id, 10);
+      } else {
+        currentMedia = parseInt(event.target.id, 10); // get id of the element Photo or Video.
+      }
       openLightbox(); // Call function for Open the Lightbox.
     },
     false,
@@ -284,7 +290,6 @@ function interact() {
   window.addEventListener(
     'keydown',
     (e) => {
-      console.log(e);
       if (e.key === 'Escape') {
         closeModal();
         closeLightbox();

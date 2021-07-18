@@ -13,6 +13,7 @@ class Media {
     this.likes = media.likes;
     this.date = media.date;
     this.price = media.price;
+    this.altText = media.altText;
     this.media = media;
   }
 
