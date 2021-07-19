@@ -211,8 +211,8 @@ function interact() {
   like.forEach((l) => l.addEventListener(
     'click',
     () => {
-      l.previousSibling.innerText = parseInt(like.previousSibling.innerText, 10) + 1;
-      l.innerText = parseInt(likes.innerText, 10) + 1;
+      l.previousSibling.innerText = parseInt(l.previousSibling.innerText, 10) + 1;
+      likes.innerText = parseInt(likes.innerText, 10) + 1;
     },
     false,
   ));
