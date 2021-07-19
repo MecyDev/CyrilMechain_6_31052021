@@ -9,7 +9,7 @@
 // Main JS
 
 // The Url of the JSon Data
-const url = `http://${window.location.host}/js/json/FishEyeData_m.json`;
+const url = `https://${window.location.host}/js/json/FishEyeData_m.json`;
 const uriParam = window.location.search; // for get the parameter after "?"
 
 const select = document.querySelector('#tri-select');
