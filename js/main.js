@@ -9,7 +9,7 @@
 // Main JS
 
 // The Url of the JSon Data
-const url = `http://${window.location.host}/js/json/FishEyeData_m.json`;
+const url = `https://${window.location.host}/js/json/FishEyeData_m.json`;
 const uriParam = window.location.search; // for get the parameter after "?"
 
 const select = document.querySelector('#tri-select');
@@ -356,7 +356,7 @@ function interact() {
     const t = m.parentElement.nextElementSibling.outerText;
     document.querySelector(
       'figure',
-    ).innerHTML = `${m.outerHTML}<figcaption>${t}</figcaption>`;
+    ).innerHTML = `${m.outerHTML}<figcaption">${t}</figcaption>`;
     if (document.querySelector('figure video')) {
       document.querySelector('figure video').setAttribute('controls', '');
     }
