@@ -9,7 +9,7 @@
 // Main JS
 
 // The Url of the JSon Data
-const url = `http://${window.location.host}/js/json/FishEyeData_m.json`;
+const url = `https://${window.location.host}/js/json/FishEyeData_m.json`;
 const uriParam = window.location.search; // for get the parameter after "?"
 
 const select = document.querySelector('#tri-select');
@@ -117,7 +117,7 @@ function displayPhotograph(id) {
 
       jsonPhotograph.medias = list; // Add the Array list in Photograph Datas.
 
-      // this part is for displays Photograph in section "main" of HOme Page.
+      // this part is for displays Photograph in section "main" of Home Page.
       // Use the function filterBytags() for filter By tag if tag are selectionned.
       if (id === undefined && filterByTag(jsonPhotograph.tags)) {
         const photograph = new Photograph(jsonPhotograph);
@@ -130,7 +130,12 @@ function displayPhotograph(id) {
         document.querySelector('.informations').innerHTML
             += photograph.information;
         media(photograph.tri(triType)); // Get madias and the type of sort for sort medias.
-        document.querySelector('.modal__header').innerHTML += photograph.name;
+        const pName = photograph.name;
+        const ariaLabelInformations = `Information sur le photographe ${pName}`;
+        const ariaLabelMedias = `Liste des travaux réalisé par le photographe ${pName}`;
+        document.querySelector('.informations').setAttribute('aria-label', ariaLabelInformations);
+        document.querySelector('.medias').setAttribute('aria-label', ariaLabelMedias);
+        document.querySelector('.modal__header').innerHTML += pName;
         // Generate the part who show all likes and day price.
         document.querySelector('.recall').innerHTML += `
           <p id="totalLikes">${photograph.totalLikes}</p><i class="fas fa-heart recall__icon"></i>
