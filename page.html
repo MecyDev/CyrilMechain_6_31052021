@@ -24,8 +24,8 @@
       </a>
     </header>
 
-    <main aria-hidden="false">
-      <section class="informations"></section>
+    <main aria-hidden="false" role=”main”>
+      <section class="informations" role=”region”></section>
       <div class="tri">
         <label for="tri-select">Trier par</label>
         <select name="trier par" id="tri-select">
@@ -34,7 +34,7 @@
           <option value="Titre">Titre</option>
         </select>
       </div>
-      <section class="medias"></section>
+      <section class="medias" role=”region”></section>
       <div class="recall"></div>
       <div class="filter"></div>
     </main>
@@ -44,7 +44,7 @@
       <a class="close" aria-label="fermer le formulaire de contact" tabindex="6"></a>
       <div class="modal__body">
         <h1 id="heading" class="modal__header">Contactez-moi </h1>
-        <form class="form" name="contact" method="POST" novalidate>
+        <form class="form" name="contact" method="POST" role=”form” novalidate>
             <label for="prénom">Prénom</label>
             <input
               class="form__input"
@@ -94,7 +94,7 @@
     <!-- end Modal form -->
 
     <!-- Lightbox -->
-    <div class="lightbox" role="dialog" aria-hidden="true" aria-label="image closeup view">
+    <div class="lightbox" role="dialog" aria-hidden="true" aria-label="Image closeup view.">
       <div class="lightbox__container">
         <a class="lightbox__close" aria-label="fermer la lightbox." tabindex="4"></a>
         <button type="button" class="btn--nav" id="left" tabindex="1" aria-label="Retour à l'image précédente."><span class="fas fa-chevron-left lightbox__navig"></span></button>
