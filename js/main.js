@@ -356,7 +356,7 @@ function interact() {
     const t = m.parentElement.nextElementSibling.outerText;
     document.querySelector(
       'figure',
-    ).innerHTML = `${m.outerHTML}<figcaption>${t}</figcaption>`;
+    ).innerHTML = `${m.outerHTML}<figcaption">${t}</figcaption>`;
     if (document.querySelector('figure video')) {
       document.querySelector('figure video').setAttribute('controls', '');
     }
